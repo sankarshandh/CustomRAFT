@@ -4,6 +4,8 @@
 |---|---|---|
 | E003-F1 | moderate: one run and one seed, but the mechanism is directly visible in the parameters | sankarshan.dh, 2026-11-12 |
 
+Discussions: [E003-D1](../discussions/E003-D1-2026-11-12-biphasic-switched-off.md)
+
 ## Claim
 On Sintel, when DoG neurons are forced to be biphasic in time, training silences them by making their spatial centre and surround equal, at no EPE cost.
 

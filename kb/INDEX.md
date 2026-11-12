@@ -41,6 +41,8 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 ## Discussions
 | id | topic | status | outcome (one line) |
 |---|---|---|---|
+| [E003-D1](discussions/E003-D1-2026-11-12-biphasic-switched-off.md) | Were the biphasic neurons "effectively switched off"? | resolved | three dead, neuron 1 attenuated (43×) and unused downstream |
+| [G-D1](discussions/G-D1-2026-11-12-id-numbering.md) | Do E, S and F numbers match? | resolved | IDs carry their origin: E003-F1, E003-Q1, …; G- for general |
 
 ## Next up
 (top 3 from [backlog.md](backlog.md))
