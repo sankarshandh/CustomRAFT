@@ -1,0 +1,3 @@
+model D:\IISc\CustomRAFT\checkpoints\30000_customraft.pth (clip 8 frames, ref 3); scenes: D:\IISc\Motion Datasets\generate_random_dot.py
+scene 0: bg v=[1.0, 0.0], objects square 139x139 v=[-6.0, -5.0]
+mean EPE over shown pairs: all 0.358, object interior 0.729, boundary 3.046, background 0.234

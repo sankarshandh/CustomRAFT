@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+scratch/
+sintel_submission/
+
+# large or regenerable experiment artefacts (kept on disk, not in git)
+*.pth
+experiments/*/runs/
+experiments/*/checkpoints/
+experiments/*/analysis/**/*.png
+experiments/*/analysis/**/*.mp4
+kb/legacy/figures/
+kb/studies/*/figures/
+events.out.tfevents.*
