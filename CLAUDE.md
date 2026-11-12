@@ -16,7 +16,7 @@ Python env: conda `motion`. Data: `D:\IISc\Motion Datasets\` (Sintel, RandomDot,
   - `runs/<run>/`: logs, metrics, filters, `git_commit.txt`, `code_snapshot/`
   - `checkpoints/<step>.pth` and `final.pth`
   - `analysis/<tool>/<step>/`
-- `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `questions.md`, `reviews/`, `glossary.md`, `backlog.md`, `templates/`
+- `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `questions.md`, `reviews/`, `discussions/`, `glossary.md`, `backlog.md`, `templates/`
 - `scratch/`: throwaway output (git-ignored)
 
 ## Checkpoint references
@@ -43,6 +43,7 @@ Tools and `evaluate.load_model` accept `E003` (final checkpoint), `E003@30000`, 
 ```
 question (Q) ──► review / plan (R) ──► idea (backlog #) ──► experiment (E) ──► finding (F)
        └──────────── answered directly by a study (S) ────────────────────────────┘
+discussion (D): a debate about any of these; it records who argued what and what changed as a result
 ```
 - **IDs carry their origin:** `E003-F1` is the first finding that came out of E003. `-Q` is a question and `-R` a review.
   - `G-Q1` and `G-R1` are general, not tied to one experiment.
@@ -54,7 +55,12 @@ question (Q) ──► review / plan (R) ──► idea (backlog #) ──► ex
   1. Draft it in chat first.
   2. After approval, write it to `kb/reviews/<id>-<date>-<topic>.md` from `kb/templates/review.md`, at most 60 lines.
   3. The user fills in Decision for each recommendation. Accepted items become backlog rows or experiments.
-- `kb/INDEX.md` lists open questions (top 3–5), all reviews (one line each), findings and experiments.
+- **Discussions and debates** (a challenge to a claim, a disagreement, a correction) go in `kb/discussions/<id>-<date>-<topic>.md`, using `kb/templates/discussion.md`:
+  - The thread has one dated entry per point (who, the point in 1–2 lines, the evidence) and ends with an Outcome saying what changed, with links.
+  - Link the discussion from every item it changed (card / finding / review line "Discussions: …").
+  - At the end of a discussion, Claude drafts the thread summary in chat. It is written only after the user approves it, never word for word from memory alone.
+- **Attribution ("raised by", "asked by", thread entries):** the user's name only for what the user raised; "Claude" for what Claude raised.
+- `kb/INDEX.md` lists open questions (top 3–5), all reviews and discussions (one line each), findings and experiments.
 
 ## KB rules
 - **The KB is filled together with the user, never automatically.**

@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | E003-typed | E002-contrast | done | 2026-11-11 19:28 → 2026-11-12 06:18 | E003-typed | sankarshan.dh, 2026-11-12 |
 
-Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md)
+Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md) · Questions: [E003-Q1…Q4](../../kb/questions.md) · Reviews: [E003-R1](../../kb/reviews/E003-R1-2026-11-12-typed-review.md)
 
 ## Question
 Are biphasic (transient) DoG units useful or costly on Sintel when training cannot turn them into monophasic ones?

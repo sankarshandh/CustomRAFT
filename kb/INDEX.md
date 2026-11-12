@@ -29,9 +29,17 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 
 ## Open questions
 (top 3–5 open rows from [questions.md](questions.md))
+- [E003-Q1](questions.md): Do biphasic units improve flow if they can't be silenced?
+- [E003-Q2](questions.md): Why does training silence transient units?
+- [E003-Q4](questions.md): Would neuron 1's motion signal be used if it reached the flow update directly?
 
 ## Reviews
 | id | topic | recommendations accepted / total | reviewed |
+|---|---|---|---|
+| [E003-R1](reviews/E003-R1-2026-11-12-typed-review.md) | What E003 tested, what it missed, what to do next | pending / 6 | sankarshan.dh 2026-11-12 |
+
+## Discussions
+| id | topic | status | outcome (one line) |
 |---|---|---|---|
 
 ## Next up
@@ -40,6 +48,6 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 ## Map
 - `experiments/E00N-name/`: `card.md` (summary), `config.json` (exact args + diff vs parent), `runs/`, `checkpoints/`, `analysis/`
 - `kb/findings/`: one claim per file · `kb/studies/`: cross-experiment analyses · `kb/glossary.md`: terms
-- `kb/questions.md`: open questions · `kb/reviews/`: reviews and plans with decisions · `kb/backlog.md`: ideas to run
-- `kb/templates/`: blank card, finding, study and review · `kb/legacy/`: the old KB, unchanged
-- **IDs:** `E003-F1` = finding 1 that came out of E003 (likewise `-Q` question, `-R` review); `G-` = not tied to one experiment; `S001` = a study (compares experiments)
+- `kb/questions.md`: open questions · `kb/reviews/`: reviews and plans with decisions · `kb/discussions/`: debates, with who said what and the outcome · `kb/backlog.md`: ideas to run
+- `kb/templates/`: blank card, finding, study, review and discussion · `kb/legacy/`: the old KB, unchanged
+- **IDs:** `E003-F1` = finding 1 that came out of E003 (likewise `-Q` question, `-R` review, `-D` discussion); `G-` = not tied to one experiment; `S001` = a study (compares experiments)
