@@ -1,0 +1,157 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E003-typed@final",
+  "max_scenes": 0,
+  "band": 4,
+  "iters": 32,
+  "occluded": {
+   "clean": {
+    "texture": {
+     "all": 0.2762,
+     "object": 1.0385,
+     "hole": null,
+     "boundary": 1.9771,
+     "background": 0.1681
+    },
+    "shape": {
+     "all": 0.2762,
+     "object": 1.0385,
+     "hole": null,
+     "boundary": 1.9771,
+     "background": 0.1681
+    },
+    "pairs": 520
+   },
+   "final": {
+    "texture": {
+     "all": 0.2764,
+     "object": 1.0383,
+     "hole": null,
+     "boundary": 1.9771,
+     "background": 0.1683
+    },
+    "shape": {
+     "all": 0.2764,
+     "object": 1.0383,
+     "hole": null,
+     "boundary": 1.9771,
+     "background": 0.1683
+    },
+    "pairs": 520
+   }
+  },
+  "hollow": {
+   "clean": {
+    "texture": {
+     "all": 0.2652,
+     "object": 4.8151,
+     "hole": 0.172,
+     "boundary": 2.4131,
+     "background": 0.1611
+    },
+    "shape": {
+     "all": 0.5426,
+     "object": 4.856,
+     "hole": 4.8426,
+     "boundary": 2.4618,
+     "background": 0.1611
+    },
+    "pairs": 520
+   },
+   "final": {
+    "texture": {
+     "all": 0.2653,
+     "object": 4.8151,
+     "hole": 0.1719,
+     "boundary": 2.4129,
+     "background": 0.1613
+    },
+    "shape": {
+     "all": 0.5428,
+     "object": 4.856,
+     "hole": 4.8425,
+     "boundary": 2.4615,
+     "background": 0.1613
+    },
+    "pairs": 520
+   }
+  },
+  "roi": {
+   "clean": {
+    "texture": {
+     "all": 0.1796,
+     "object": 0.1535,
+     "hole": null,
+     "boundary": 0.3467,
+     "background": 0.1766
+    },
+    "shape": {
+     "all": 0.5522,
+     "object": 4.748,
+     "hole": null,
+     "boundary": 2.5418,
+     "background": 0.1766
+    },
+    "pairs": 520
+   },
+   "final": {
+    "texture": {
+     "all": 0.1802,
+     "object": 0.1583,
+     "hole": null,
+     "boundary": 0.3474,
+     "background": 0.1769
+    },
+    "shape": {
+     "all": 0.5524,
+     "object": 4.7482,
+     "hole": null,
+     "boundary": 2.541,
+     "background": 0.1769
+    },
+    "pairs": 520
+   }
+  },
+  "visible": {
+   "clean": {
+    "texture": {
+     "all": 0.2555,
+     "object": 0.7675,
+     "hole": null,
+     "boundary": 1.8624,
+     "background": 0.1691
+    },
+    "shape": {
+     "all": 0.2555,
+     "object": 0.7675,
+     "hole": null,
+     "boundary": 1.8624,
+     "background": 0.1691
+    },
+    "pairs": 520
+   },
+   "final": {
+    "texture": {
+     "all": 0.2577,
+     "object": 0.7954,
+     "hole": null,
+     "boundary": 1.8721,
+     "background": 0.1692
+    },
+    "shape": {
+     "all": 0.2577,
+     "object": 0.7954,
+     "hole": null,
+     "boundary": 1.8721,
+     "background": 0.1692
+    },
+    "pairs": 520
+   }
+  }
+ },
+ "seconds": 487.0,
+ "when": "2026-11-12T15:39:47",
+ "git": "a624036+dirty",
+ "full": true
+}

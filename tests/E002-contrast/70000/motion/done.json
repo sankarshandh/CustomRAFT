@@ -1,0 +1,51 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E002-contrast@70000",
+  "light": true,
+  "fps": 6,
+  "scenes": [
+   {
+    "name": "scene0_camouflaged",
+    "n_frames": 12,
+    "epe": 0.3991,
+    "epe_pair_only": 0.3996,
+    "epe_boundary": 3.3209
+   }
+  ],
+  "dog_labels": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "dog_object_over_background": [
+   0.99,
+   0.986,
+   1.0,
+   1.003,
+   0.998,
+   0.995,
+   0.997,
+   0.376
+  ],
+  "dog_silent": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ]
+ },
+ "seconds": 12.1,
+ "when": "2026-11-12T12:26:24",
+ "git": "a624036+dirty",
+ "full": false
+}

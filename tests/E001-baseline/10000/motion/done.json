@@ -1,0 +1,52 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E001-baseline@10000",
+  "light": true,
+  "fps": 6,
+  "scenes": [
+   {
+    "name": "scene0_occluded",
+    "n_frames": 12,
+    "epe": 0.4703,
+    "epe_pair_only": 0.461,
+    "epe_boundary": 3.7067,
+    "epe_shape_inside": null
+   }
+  ],
+  "dog_labels": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "dog_object_over_background": [
+   0.728,
+   0.52,
+   1.091,
+   0.586,
+   0.972,
+   0.165,
+   1.144,
+   0.666
+  ],
+  "dog_silent": [
+   true,
+   true,
+   false,
+   true,
+   true,
+   true,
+   false,
+   true
+  ]
+ },
+ "seconds": 12.8,
+ "when": "2026-11-12T15:12:56",
+ "git": "a624036+dirty",
+ "full": false
+}

@@ -1,0 +1,21 @@
+{
+ "ok": true,
+ "result": {
+  "step": 70000,
+  "sintel": {
+   "clean": 1.7527,
+   "final": 2.1011,
+   "clean_noc": 0.9412,
+   "clean_occ": 11.8028,
+   "final_noc": 1.2624,
+   "final_occ": 12.4878,
+   "clean_1px": 0.8525,
+   "final_1px": 0.8227
+  },
+  "sintel_source": "val_metrics.jsonl (periodic subset)"
+ },
+ "seconds": 0.0,
+ "when": "2026-11-12T12:26:04",
+ "git": "a624036+dirty",
+ "full": false
+}

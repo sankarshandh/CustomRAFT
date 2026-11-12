@@ -1,0 +1,13 @@
+{
+ "ok": true,
+ "result": {
+  "files": [
+   "probe_dog_heatmap_E001.png",
+   "probe_maps_E001.png"
+  ]
+ },
+ "seconds": 13.1,
+ "when": "2026-11-12T12:08:38",
+ "git": "a624036+dirty",
+ "full": true
+}

@@ -1,0 +1,44 @@
+{
+ "checkpoint": "E002-contrast@20000",
+ "light": true,
+ "fps": 6,
+ "scenes": [
+  {
+   "name": "scene0_camouflaged",
+   "n_frames": 12,
+   "epe": 0.458,
+   "epe_pair_only": 0.4589,
+   "epe_boundary": 3.086
+  }
+ ],
+ "dog_labels": [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7"
+ ],
+ "dog_object_over_background": [
+  0.986,
+  0.909,
+  1.002,
+  1.005,
+  1.004,
+  1.004,
+  1.0,
+  0.27
+ ],
+ "dog_silent": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  true
+ ]
+}

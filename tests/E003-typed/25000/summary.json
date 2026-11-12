@@ -1,0 +1,213 @@
+{
+ "checkpoint": "E003-typed@25000",
+ "experiment": "E003-typed",
+ "dir": "25000",
+ "step": 25000,
+ "full": false,
+ "parent": "E002-contrast",
+ "parent_checkpoint": "E002-contrast@20000",
+ "generated": "2026-11-12T15:19:02",
+ "git": "a624036+dirty",
+ "stages": {
+  "metrics": {
+   "step": 25000,
+   "sintel": {
+    "clean": 2.2701,
+    "final": 2.9163,
+    "clean_noc": 1.2622,
+    "clean_occ": 14.7511,
+    "final_noc": 1.6846,
+    "final_occ": 18.1694,
+    "clean_1px": 0.8148,
+    "final_1px": 0.7853
+   },
+   "sintel_source": "val_metrics.jsonl (periodic subset)"
+  },
+  "frontend": {
+   "silencing": {
+    "checkpoint": "E003-typed@25000",
+    "contrast_eps": 0.005,
+    "is_biphasic": [
+     false,
+     true,
+     false,
+     true,
+     false,
+     true,
+     false,
+     true
+    ],
+    "sigma_center": [
+     0.84204,
+     0.801118,
+     1.533821,
+     4.351676,
+     2.673117,
+     4.899518,
+     2.804519,
+     4.89801
+    ],
+    "sigma_surround": [
+     1.35488,
+     0.855928,
+     2.172557,
+     4.353765,
+     2.836985,
+     4.901481,
+     4.116946,
+     4.956325
+    ],
+    "spatial_l1": [
+     0.670412,
+     0.09346,
+     0.509411,
+     0.0006,
+     0.087429,
+     0.000447,
+     0.533243,
+     0.013137
+    ],
+    "channel_mix_norm": [
+     0.646402,
+     0.332126,
+     0.764557,
+     0.119358,
+     0.576568,
+     0.186683,
+     0.690508,
+     0.280689
+    ],
+    "gain": [
+     3.999064,
+     1.054978,
+     3.999729,
+     1.039726,
+     3.572771,
+     1.048036,
+     3.661348,
+     1.031945
+    ],
+    "raw_rms_sintel": [
+     0.026278,
+     0.000944,
+     0.023831,
+     3e-06,
+     0.003954,
+     3e-06,
+     0.030035,
+     0.000145
+    ],
+    "drive_std_sintel": [
+     3.888567,
+     0.194163,
+     3.88153,
+     0.00056,
+     2.1335,
+     0.000694,
+     3.593308,
+     0.029863
+    ],
+    "raw_rms_dots": [
+     0.279725,
+     0.002961,
+     0.15928,
+     3e-06,
+     0.016075,
+     3e-06,
+     0.092031,
+     0.000133
+    ],
+    "drive_std_dots": [
+     3.99843,
+     0.53751,
+     3.997761,
+     0.000522,
+     3.411544,
+     0.000639,
+     3.655924,
+     0.027344
+    ],
+    "monophasic_median_raw_rms_sintel": 0.025055,
+    "attenuation_vs_mono": [
+     0.953447,
+     26.532553,
+     1.051333,
+     9297.549805,
+     6.336467,
+     7572.20166,
+     0.834169,
+     173.049866
+    ],
+    "sintel_clips": 20
+   },
+   "params": {
+    "gain_mode": "contrast",
+    "temporal_mode": "typed",
+    "gain_range": [
+     1.0,
+     4.0
+    ]
+   }
+  },
+  "motion": {
+   "checkpoint": "E003-typed@25000",
+   "light": true,
+   "fps": 6,
+   "scenes": [
+    {
+     "name": "scene0_camouflaged",
+     "n_frames": 12,
+     "epe": 0.4679,
+     "epe_pair_only": 0.4752,
+     "epe_boundary": 3.3278
+    }
+   ],
+   "dog_labels": [
+    "0 mono",
+    "1 bi",
+    "2 mono",
+    "3 bi",
+    "4 mono",
+    "5 bi",
+    "6 mono",
+    "7 bi"
+   ],
+   "dog_object_over_background": [
+    0.988,
+    0.738,
+    0.991,
+    1.457,
+    0.991,
+    1.337,
+    0.995,
+    3.633
+   ],
+   "dog_silent": [
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true
+   ]
+  }
+ },
+ "failed_stages": [],
+ "flags": [
+  "DoG 1 (bi): raw Sintel response 27\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 3 (bi): raw Sintel response 9,298\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 5 (bi): raw Sintel response 7,572\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 7 (bi): raw Sintel response 173\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 3 (bi): centre \u03c3 4.352 \u2248 surround \u03c3 4.354, so the spatial kernel nearly cancels (spatial L1 0.0006) (frontend/silencing_check.json)",
+  "DoG 5 (bi): centre \u03c3 4.900 \u2248 surround \u03c3 4.901, so the spatial kernel nearly cancels (spatial L1 0.0004) (frontend/silencing_check.json)",
+  "DoG 7 (bi): centre \u03c3 4.898 \u2248 surround \u03c3 4.956, so the spatial kernel nearly cancels (spatial L1 0.0131) (frontend/silencing_check.json)",
+  "DoG 0 (mono): gain 3.999 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 2 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "scene0_camouflaged: pair-only input gives the same EPE as the full clip (0.475 vs 0.468): the extra clip frames are not used here (motion/summary.json)",
+  "no active DoG neuron responds more inside moving objects than on the background (max ratio 0.99) (motion/summary.json)",
+  "Sintel val clean EPE 2.270 vs parent 2.898 (\u0394 -0.628)",
+  "Sintel val final EPE 2.916 vs parent 3.651 (\u0394 -0.735)"
+ ]
+}

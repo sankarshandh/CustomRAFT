@@ -19,6 +19,7 @@ Python env: conda `motion`. Data: `D:\IISc\Motion Datasets\` (Sintel, RandomDot,
   - `checkpoints/<step>.pth` and `final.pth`
   - `analysis/<tool>/<step>/`
 - `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `questions.md`, `reviews/`, `discussions/`, `glossary.md`, `backlog.md`, `templates/`
+- `tests/<E00N-name>/<step>/`: pipeline output (`tools/pipeline.py`): `report.md`, `summary.json`, `index.html`, one folder per stage. Generated, not reviewed. `tests/README.md` lists them all.
 - `scratch/`: throwaway output (git-ignored)
 
 ## Checkpoint references
@@ -36,6 +37,7 @@ Tools and `evaluate.load_model` accept `E003` (final checkpoint), `E003@30000`, 
 4. `python -u train.py --exp experiments/E004-name`. Add `--name smoke --num_steps 300` for a smoke run inside the same experiment.
 5. `git tag E004-name`
 6. When training is done, run `python tools/check_compat.py --make E004`, then commit.
+7. `python tools/pipeline.py E004`. Then read `tests/E004-name/final/report.md` and open its `index.html` (the motion of E004 and its parent, played in sync). The parent must have been through the pipeline too.
 
 ## Outputs
 - An analysis of one experiment goes to `experiments/E00N/analysis/`.
@@ -66,6 +68,7 @@ discussion (D): a debate about any of these; it records who argued what and what
 
 ## KB rules
 - **The KB is filled together with the user, never automatically.**
+  0. Before drafting a card, finding, review or study, the assistant reads `tests/<E>/…/report.md` (key numbers, the unusual list, the trajectory) for the experiment and its parent, and cites those files. Auto-flags are leads to check, not conclusions. Nothing is copied from `tests/` into `kb/` without agreement.
   1. The assistant prepares a fact sheet in chat: numbers with their source files, what is uncertain, and open questions.
   2. The user decides the claim, verdict and wording.
   3. The assistant writes exactly the agreed text and sets `reviewed`.

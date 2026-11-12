@@ -1,0 +1,65 @@
+{
+ "checkpoint": "E002-contrast@90000",
+ "light": false,
+ "fps": 6,
+ "scenes": [
+  {
+   "name": "scene0_camouflaged",
+   "n_frames": 24,
+   "epe": 0.4231,
+   "epe_pair_only": 0.4234,
+   "epe_boundary": 2.9319
+  },
+  {
+   "name": "scene0_visible",
+   "n_frames": 24,
+   "epe": 0.3959,
+   "epe_pair_only": 0.3964,
+   "epe_boundary": 2.5988
+  },
+  {
+   "name": "scene1_camouflaged",
+   "n_frames": 24,
+   "epe": 0.5569,
+   "epe_pair_only": 0.5576,
+   "epe_boundary": 0.896
+  },
+  {
+   "name": "scene2_camouflaged_final",
+   "n_frames": 24,
+   "epe": 0.0908,
+   "epe_pair_only": 0.0905,
+   "epe_boundary": 0.9409
+  }
+ ],
+ "dog_labels": [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7"
+ ],
+ "dog_object_over_background": [
+  0.926,
+  0.894,
+  0.935,
+  0.94,
+  0.964,
+  0.931,
+  0.95,
+  0.753
+ ],
+ "dog_silent": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+ ]
+}

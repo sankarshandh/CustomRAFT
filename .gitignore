@@ -12,3 +12,10 @@ experiments/*/analysis/**/*.mp4
 kb/legacy/figures/
 kb/studies/*/figures/
 events.out.tfevents.*
+
+# pipeline output (tools/pipeline.py): reports, summaries and PNG figures are tracked; videos and frame sequences are not
+tests/**/*.mp4
+tests/**/*.gif
+tests/**/motion/**/flow/
+tests/**/motion/**/layers/
+tests/**/log.txt

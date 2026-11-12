@@ -61,6 +61,17 @@ def analysis_dir(ref, tool):
     return osp.join(exp, 'analysis', tool, tag.split('@')[1])
 
 
+TESTS = osp.join(ROOT, 'tests')
+
+
+def tests_dir(ref, stage=None):
+    """Pipeline output folder for one checkpoint (tools/pipeline.py): tests/<experiment>/<step>[/<stage>]/.
+    <step> is 'final' for final.pth, else the step number; a bare .pth path goes to tests/_other/<name>/."""
+    exp, tag = describe(ref)
+    d = osp.join(TESTS, osp.basename(exp), tag.split('@')[1]) if exp else osp.join(TESTS, '_other', tag)
+    return osp.join(d, stage) if stage else d
+
+
 def resolve_ckpt(ref):
     """Checkpoint reference -> file path (see module docstring)."""
     m = _REF.match(ref)

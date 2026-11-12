@@ -1,0 +1,44 @@
+{
+ "checkpoint": "E003-typed@60000",
+ "light": true,
+ "fps": 6,
+ "scenes": [
+  {
+   "name": "scene0_camouflaged",
+   "n_frames": 12,
+   "epe": 0.387,
+   "epe_pair_only": 0.39,
+   "epe_boundary": 3.0568
+  }
+ ],
+ "dog_labels": [
+  "0 mono",
+  "1 bi",
+  "2 mono",
+  "3 bi",
+  "4 mono",
+  "5 bi",
+  "6 mono",
+  "7 bi"
+ ],
+ "dog_object_over_background": [
+  0.988,
+  0.841,
+  0.991,
+  4.025,
+  0.991,
+  1.26,
+  0.992,
+  2.511
+ ],
+ "dog_silent": [
+  false,
+  false,
+  false,
+  true,
+  false,
+  true,
+  false,
+  true
+ ]
+}

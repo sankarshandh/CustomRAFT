@@ -4,8 +4,10 @@
 
 Freeze test: every frame of each encoder window is replaced by the window's centre frame; reports the relative
 feature change and EPE (normal vs frozen) on 60 evenly spaced Sintel pairs per pass. Also RandomDot EPE.
-Writes <experiment>/analysis/temporal/<step>/temporal.json for each checkpoint.
+Writes <experiment>/analysis/temporal/<step>/temporal.json for each checkpoint
+(--out_dir DIR: DIR/temporal.json instead; only with a single checkpoint).
 """
+import argparse
 import json
 import math
 import os
@@ -135,20 +137,28 @@ def freeze_test(model, items):
 
 
 if __name__ == '__main__':
+    ap = argparse.ArgumentParser()
+    ap.add_argument('checkpoints', nargs='+')
+    ap.add_argument('--out_dir', default=None, help='write DIR/temporal.json (single checkpoint only)')
+    ap.add_argument('--no_rdk', action='store_true', help='skip the RandomDot camouflage/visible EPE '
+                    '(tools/pipeline.py measures random patterns with eval_random_patterns.py instead)')
+    a = ap.parse_args()
+    if a.out_dir and len(a.checkpoints) != 1:
+        ap.error('--out_dir needs exactly one checkpoint')
     torch.manual_seed(0)
-    ckpts = sys.argv[1:]
+    ckpts = a.checkpoints
     for name in ckpts:
         model = load_model(name).eval()
         r = {'temporal': temporal_summary(model), 'mix': mix_stats(model)}
         items = sintel_subset(model, 60)
         r['sintel_freeze'], clips = freeze_test(model, items)
         r['drive'] = drive_stats(model, clips)
-        for rd in ('camouflage', 'visible'):
+        for rd in () if a.no_rdk else ('camouflage', 'visible'):
             v = validate_sintel(model, rf'D:\IISc\Motion Datasets\RandomDot\{rd}', max_pairs=100, num_workers=0)
             r[f'rdk_{rd}'] = {k: round(v[k], 3) for k in ('clean', 'clean_noc', 'clean_occ', 'final', 'final_noc', 'final_occ')}
         print('=====', name)
         print(json.dumps(r, indent=1))
-        out_dir = paths.analysis_dir(name, 'temporal')
+        out_dir = a.out_dir or paths.analysis_dir(name, 'temporal')
         os.makedirs(out_dir, exist_ok=True)
         with open(osp.join(out_dir, 'temporal.json'), 'w') as f:
             json.dump({'checkpoint': paths.describe(name)[1], **r}, f, indent=1)

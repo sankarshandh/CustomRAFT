@@ -1,0 +1,41 @@
+{
+ "ok": true,
+ "result": {
+  "context_ablation_epe": {
+   "normal": {
+    "all": 0.3102347743180063,
+    "object interior": 0.8697371995517973,
+    "boundary": 1.8494797078452274,
+    "background": 0.20018488198777218
+   },
+   "inp = 0": {
+    "all": 0.325505959490935,
+    "object interior": 0.8919182738337453,
+    "boundary": 1.8414928803067625,
+    "background": 0.2159585251284627
+   },
+   "net = 0": {
+    "all": 0.3044699314567778,
+    "object interior": 0.9183874559270644,
+    "boundary": 1.8717535060268844,
+    "background": 0.1890753331261294
+   },
+   "inp = net = 0": {
+    "all": 0.3140193240510093,
+    "object interior": 0.9883473103176442,
+    "boundary": 1.8985637527845267,
+    "background": 0.1933018588904103
+   },
+   "context from another scene": {
+    "all": 0.30503593468003803,
+    "object interior": 0.828945845004511,
+    "boundary": 1.7960337799273498,
+    "background": 0.19979916157144084
+   }
+  }
+ },
+ "seconds": 35.9,
+ "when": "2026-11-12T12:09:14",
+ "git": "a624036+dirty",
+ "full": true
+}

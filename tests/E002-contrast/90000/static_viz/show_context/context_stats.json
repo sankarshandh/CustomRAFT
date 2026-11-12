@@ -1,0 +1,109 @@
+{
+  "tag": "E002-contrast@90000_scene0_camouflaged",
+  "context_vs_object_mask_max_abs_corr": {
+    "net": 0.07013706862926483,
+    "inp": 0.04563034698367119
+  },
+  "context_vs_object_mask_mean_abs_corr": {
+    "net": 0.01985945738852024,
+    "inp": 0.015083150938153267
+  },
+  "context_vs_boundary_max_abs_corr": {
+    "net": 0.049478527158498764,
+    "inp": 0.04721841216087341
+  },
+  "inp_dead_channels": 19,
+  "net_saturated_fraction": 0.1574300080537796,
+  "gru_share_weight": {
+    "update gate z": {
+      "hidden h (from net)": 0.22748875617980957,
+      "context inp": 0.3734789490699768,
+      "motion features": 0.3990322947502136
+    },
+    "reset gate r": {
+      "hidden h (from net)": 0.24515822529792786,
+      "context inp": 0.3197055757045746,
+      "motion features": 0.43513619899749756
+    },
+    "candidate q": {
+      "hidden h (from net)": 0.6269938945770264,
+      "context inp": 0.19730700552463531,
+      "motion features": 0.1756991297006607
+    }
+  },
+  "gru_share_weight_x_activation": {
+    "update gate z": {
+      "hidden h (from net)": 0.2804214060306549,
+      "context inp": 0.019615408033132553,
+      "motion features": 0.6999631524085999
+    },
+    "reset gate r": {
+      "hidden h (from net)": 0.38105344772338867,
+      "context inp": 0.01931229792535305,
+      "motion features": 0.5996342301368713
+    },
+    "candidate q": {
+      "hidden h (from net)": 0.7424177527427673,
+      "context inp": 0.009430634789168835,
+      "motion features": 0.24815155565738678
+    }
+  },
+  "context_share": {
+    "iter1": {
+      "z_all": 0.04974392056465149,
+      "z_object": 0.0533202588558197,
+      "z_background": 0.049372538924217224,
+      "q_all": 0.08403539657592773,
+      "mean_update_gate": 0.6965891718864441,
+      "mean_reset_gate": 0.08867792040109634
+    },
+    "iter4": {
+      "z_all": 0.04930362105369568,
+      "z_object": 0.06353158503770828,
+      "z_background": 0.047826122492551804,
+      "q_all": 0.10557210445404053,
+      "mean_update_gate": 0.5562013983726501,
+      "mean_reset_gate": 0.2288316935300827
+    },
+    "iter32": {
+      "z_all": 0.046738725155591965,
+      "z_object": 0.05802719667553902,
+      "z_background": 0.04556647688150406,
+      "q_all": 0.10360145568847656,
+      "mean_update_gate": 0.4856131076812744,
+      "mean_reset_gate": 0.2979554235935211
+    }
+  },
+  "ablation_epe": {
+    "normal": {
+      "all": 0.31539007359080845,
+      "object interior": 0.9254696957458052,
+      "boundary": 1.791883564229639,
+      "background": 0.20428394122044713
+    },
+    "inp = 0": {
+      "all": 0.3089999448921945,
+      "object interior": 0.8099030457540024,
+      "boundary": 1.7509545900541887,
+      "background": 0.20766078456648396
+    },
+    "net = 0": {
+      "all": 0.428118238846461,
+      "object interior": 2.6322592011226664,
+      "boundary": 2.1234599874948823,
+      "background": 0.18697870285148963
+    },
+    "inp = net = 0": {
+      "all": 0.3413097444507811,
+      "object interior": 1.3150528464133968,
+      "boundary": 1.9136084176926542,
+      "background": 0.1985176812956859
+    },
+    "context from another scene": {
+      "all": 0.3155914983815617,
+      "object interior": 0.9316503324889753,
+      "boundary": 1.7830349001880146,
+      "background": 0.2044323635445801
+    }
+  }
+}

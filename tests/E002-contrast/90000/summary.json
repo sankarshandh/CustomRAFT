@@ -1,0 +1,444 @@
+{
+ "checkpoint": "E002-contrast@90000",
+ "experiment": "E002-contrast",
+ "dir": "90000",
+ "step": 90000,
+ "full": true,
+ "parent": "E001-baseline",
+ "parent_checkpoint": "E001-baseline@30000",
+ "generated": "2026-11-12T15:19:02",
+ "git": "a624036+dirty",
+ "stages": {
+  "metrics": {
+   "step": 90000,
+   "sintel": {
+    "clean": 1.572,
+    "final": 2.0219,
+    "clean_noc": 0.8378,
+    "clean_occ": 10.8913,
+    "final_noc": 1.2189,
+    "final_occ": 12.2142,
+    "clean_1px": 0.8607,
+    "final_1px": 0.8302
+   },
+   "sintel_source": "computed by pipeline (full validation)"
+  },
+  "frontend": {
+   "silencing": {
+    "checkpoint": "E002-contrast@90000",
+    "contrast_eps": 0.005,
+    "is_biphasic": null,
+    "sigma_center": [
+     0.892338,
+     0.732485,
+     1.726677,
+     2.211611,
+     3.642801,
+     1.09537,
+     2.159801,
+     4.73755
+    ],
+    "sigma_surround": [
+     1.288716,
+     1.564883,
+     2.225167,
+     2.634836,
+     4.92047,
+     2.93775,
+     4.999932,
+     4.93322
+    ],
+    "spatial_l1": [
+     0.529725,
+     0.996107,
+     0.371908,
+     0.257135,
+     0.379019,
+     1.244744,
+     1.058357,
+     0.045866
+    ],
+    "channel_mix_norm": [
+     0.691612,
+     0.644823,
+     0.798704,
+     0.58627,
+     0.749563,
+     0.685664,
+     0.75079,
+     0.352092
+    ],
+    "gain": [
+     3.999995,
+     1.101433,
+     3.999994,
+     2.020557,
+     3.830343,
+     3.672892,
+     1.55425,
+     1.071686
+    ],
+    "raw_rms_sintel": [
+     0.021709,
+     0.037539,
+     0.010423,
+     0.006847,
+     0.018384,
+     0.023189,
+     0.018099,
+     0.001098
+    ],
+    "drive_std_sintel": [
+     3.843966,
+     1.086109,
+     3.474664,
+     1.55765,
+     3.641334,
+     3.523478,
+     1.442591,
+     0.227831
+    ],
+    "raw_rms_dots": [
+     0.228558,
+     0.402006,
+     0.069287,
+     0.035114,
+     0.053007,
+     0.086055,
+     0.020543,
+     0.002893
+    ],
+    "drive_std_dots": [
+     3.999043,
+     1.101349,
+     3.989621,
+     2.000377,
+     3.813348,
+     3.66671,
+     1.510153,
+     0.536731
+    ],
+    "monophasic_median_raw_rms_sintel": 0.018242,
+    "attenuation_vs_mono": [
+     0.840272,
+     0.485937,
+     1.750169,
+     2.663982,
+     0.992256,
+     0.786645,
+     1.007865,
+     16.617603
+    ],
+    "sintel_clips": 20
+   },
+   "params": {
+    "gain_mode": "contrast",
+    "temporal_mode": "free",
+    "gain_range": [
+     1.0,
+     4.0
+    ]
+   },
+   "temporal": {
+    "checkpoint": "E002-contrast@90000",
+    "temporal": {
+     "dog_taps_abs_normalised": [
+      [
+       -0.0010000000474974513,
+       0.003000000026077032,
+       0.9940000176429749,
+       0.0010000000474974513,
+       -0.0010000000474974513
+      ],
+      [
+       -0.0020000000949949026,
+       0.0010000000474974513,
+       0.9900000095367432,
+       0.004999999888241291,
+       -0.0020000000949949026
+      ],
+      [
+       -0.0,
+       -0.0020000000949949026,
+       0.9980000257492065,
+       0.0,
+       -0.0
+      ],
+      [
+       -0.0,
+       0.0010000000474974513,
+       0.9940000176429749,
+       -0.004999999888241291,
+       -0.0
+      ],
+      [
+       -0.0,
+       0.003000000026077032,
+       0.9919999837875366,
+       0.004999999888241291,
+       -0.0
+      ],
+      [
+       -0.0,
+       -0.0010000000474974513,
+       0.996999979019165,
+       -0.0020000000949949026,
+       -0.0
+      ],
+      [
+       -0.0,
+       0.0020000000949949026,
+       0.9959999918937683,
+       0.0020000000949949026,
+       -0.0
+      ],
+      [
+       0.0010000000474974513,
+       0.1340000033378601,
+       0.7710000276565552,
+       0.08799999952316284,
+       -0.006000000052154064
+      ]
+     ],
+     "dog_offcentre_mass": [
+      0.00559999980032444,
+      0.010300000198185444,
+      0.002099999925121665,
+      0.00570000009611249,
+      0.007600000128149986,
+      0.0032999999821186066,
+      0.00419999985024333,
+      0.22869999706745148
+     ],
+     "gabor_side_frame_weight": [
+      0.004000000189989805,
+      0.009700000286102295,
+      0.0038999998942017555,
+      0.006200000178068876,
+      0.0038999998942017555,
+      0.006099999882280827,
+      0.004000000189989805,
+      0.00570000009611249,
+      0.012900000438094139,
+      0.004100000020116568,
+      0.004000000189989805,
+      0.005100000184029341,
+      0.011099999770522118,
+      0.011699999682605267,
+      0.00419999985024333,
+      0.004600000102072954
+     ]
+    },
+    "mix": {
+     "gabor_on_off_imbalance": [
+      0.949999988079071,
+      0.7319999933242798,
+      0.8930000066757202,
+      0.8360000252723694,
+      0.8870000243186951,
+      0.8119999766349792,
+      0.40400001406669617,
+      0.4860000014305115,
+      0.3140000104904175,
+      0.8769999742507935,
+      0.6570000052452087,
+      0.9100000262260437,
+      0.35899999737739563,
+      0.15800000727176666,
+      0.45500001311302185,
+      0.9509999752044678
+     ],
+     "dog_neuron_share_of_gabor_input": [
+      0.1080000028014183,
+      0.20000000298023224,
+      0.11299999803304672,
+      0.21699999272823334,
+      0.07800000160932541,
+      0.08399999886751175,
+      0.12099999934434891,
+      0.07999999821186066
+     ]
+    },
+    "sintel_freeze": {
+     "normal": {
+      "all": 1.83,
+      "noc": 1.042,
+      "occ": 12.331,
+      "0-1": 0.184,
+      "1-4": 0.337,
+      "4-16": 0.872,
+      "16-1000000000.0": 7.229
+     },
+     "freeze": {
+      "all": 1.873,
+      "noc": 1.071,
+      "occ": 12.567,
+      "0-1": 0.184,
+      "1-4": 0.34,
+      "4-16": 0.862,
+      "16-1000000000.0": 7.46
+     },
+     "feature_rel_change_mean": 0.0363,
+     "feature_rel_change_max": 0.1519
+    },
+    "drive": {
+     "drive_std": [
+      3.752000093460083,
+      1.0779999494552612,
+      3.437999963760376,
+      1.524999976158142,
+      3.631999969482422,
+      3.2790000438690186,
+      1.3040000200271606,
+      0.20600000023841858
+     ],
+     "frac_abs_gt1": [
+      0.4650000035762787,
+      0.1809999942779541,
+      0.46399998664855957,
+      0.2800000011920929,
+      0.5270000100135803,
+      0.453000009059906,
+      0.24699999392032623,
+      0.004999999888241291
+     ]
+    },
+    "rdk_camouflage": {
+     "clean": 0.275,
+     "clean_noc": 0.273,
+     "clean_occ": 0.731,
+     "final": 0.276,
+     "final_noc": 0.273,
+     "final_occ": 0.736
+    },
+    "rdk_visible": {
+     "clean": 0.259,
+     "clean_noc": 0.255,
+     "clean_occ": 0.884,
+     "final": 0.261,
+     "final_noc": 0.257,
+     "final_occ": 0.867
+    }
+   }
+  },
+  "probes": {
+   "files": [
+    "probe_dog_heatmap_E002.png",
+    "probe_maps_E002.png"
+   ]
+  },
+  "static_viz": {
+   "context_ablation_epe": {
+    "normal": {
+     "all": 0.31539007359080845,
+     "object interior": 0.9254696957458052,
+     "boundary": 1.791883564229639,
+     "background": 0.20428394122044713
+    },
+    "inp = 0": {
+     "all": 0.3089999448921945,
+     "object interior": 0.8099030457540024,
+     "boundary": 1.7509545900541887,
+     "background": 0.20766078456648396
+    },
+    "net = 0": {
+     "all": 0.428118238846461,
+     "object interior": 2.6322592011226664,
+     "boundary": 2.1234599874948823,
+     "background": 0.18697870285148963
+    },
+    "inp = net = 0": {
+     "all": 0.3413097444507811,
+     "object interior": 1.3150528464133968,
+     "boundary": 1.9136084176926542,
+     "background": 0.1985176812956859
+    },
+    "context from another scene": {
+     "all": 0.3155914983815617,
+     "object interior": 0.9316503324889753,
+     "boundary": 1.7830349001880146,
+     "background": 0.2044323635445801
+    }
+   }
+  },
+  "motion": {
+   "checkpoint": "E002-contrast@90000",
+   "light": false,
+   "fps": 6,
+   "scenes": [
+    {
+     "name": "scene0_camouflaged",
+     "n_frames": 24,
+     "epe": 0.4231,
+     "epe_pair_only": 0.4234,
+     "epe_boundary": 2.9319
+    },
+    {
+     "name": "scene0_visible",
+     "n_frames": 24,
+     "epe": 0.3959,
+     "epe_pair_only": 0.3964,
+     "epe_boundary": 2.5988
+    },
+    {
+     "name": "scene1_camouflaged",
+     "n_frames": 24,
+     "epe": 0.5569,
+     "epe_pair_only": 0.5576,
+     "epe_boundary": 0.896
+    },
+    {
+     "name": "scene2_camouflaged_final",
+     "n_frames": 24,
+     "epe": 0.0908,
+     "epe_pair_only": 0.0905,
+     "epe_boundary": 0.9409
+    }
+   ],
+   "dog_labels": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "dog_object_over_background": [
+    0.926,
+    0.894,
+    0.935,
+    0.94,
+    0.964,
+    0.931,
+    0.95,
+    0.753
+   ],
+   "dog_silent": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  }
+ },
+ "failed_stages": [],
+ "flags": [
+  "DoG 7 (free): raw Sintel response 17\u00d7 below the median  neuron (frontend/silencing_check.json)",
+  "DoG 7 (free): centre \u03c3 4.738 \u2248 surround \u03c3 4.933, so the spatial kernel nearly cancels (spatial L1 0.0459) (frontend/silencing_check.json)",
+  "DoG 0 (free): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 2 (free): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "scene0_camouflaged: pair-only input gives the same EPE as the full clip (0.423 vs 0.423): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_visible: pair-only input gives the same EPE as the full clip (0.396 vs 0.396): the extra clip frames are not used here (motion/summary.json)",
+  "scene1_camouflaged: pair-only input gives the same EPE as the full clip (0.558 vs 0.557): the extra clip frames are not used here (motion/summary.json)",
+  "scene2_camouflaged_final: pair-only input gives the same EPE as the full clip (0.090 vs 0.091): the extra clip frames are not used here (motion/summary.json)",
+  "no active DoG neuron responds more inside moving objects than on the background (max ratio 0.96) (motion/summary.json)",
+  "Sintel val clean EPE 1.572 vs parent 2.268 (\u0394 -0.696)",
+  "Sintel val final EPE 2.022 vs parent 3.269 (\u0394 -1.247)"
+ ]
+}

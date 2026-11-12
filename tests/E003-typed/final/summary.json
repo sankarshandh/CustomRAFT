@@ -1,0 +1,614 @@
+{
+ "checkpoint": "E003-typed@final",
+ "experiment": "E003-typed",
+ "dir": "final",
+ "step": 100000,
+ "full": true,
+ "parent": "E002-contrast",
+ "parent_checkpoint": "E002-contrast@90000",
+ "generated": "2026-11-12T15:40:52",
+ "git": "a624036+dirty",
+ "stages": {
+  "metrics": {
+   "step": 100000,
+   "sintel": {
+    "clean": 1.5071,
+    "final": 1.9978,
+    "clean_noc": 0.8092,
+    "clean_occ": 10.3655,
+    "final_noc": 1.178,
+    "final_occ": 12.4035,
+    "clean_1px": 0.8619,
+    "final_1px": 0.8302
+   },
+   "sintel_source": "val_metrics.jsonl (full validation)"
+  },
+  "frontend": {
+   "silencing": {
+    "checkpoint": "E003-typed@final",
+    "contrast_eps": 0.005,
+    "is_biphasic": [
+     false,
+     true,
+     false,
+     true,
+     false,
+     true,
+     false,
+     true
+    ],
+    "sigma_center": [
+     0.866881,
+     0.709239,
+     1.433205,
+     4.494676,
+     2.655887,
+     4.940496,
+     2.047647,
+     4.930633
+    ],
+    "sigma_surround": [
+     1.704849,
+     0.739558,
+     2.174888,
+     4.496175,
+     3.248281,
+     4.941198,
+     4.31481,
+     4.966745
+    ],
+    "spatial_l1": [
+     0.953506,
+     0.054278,
+     0.60197,
+     0.000406,
+     0.290378,
+     0.000157,
+     0.983019,
+     0.00806
+    ],
+    "channel_mix_norm": [
+     0.706591,
+     0.28646,
+     1.094071,
+     0.124065,
+     0.635246,
+     0.150733,
+     0.724224,
+     0.260808
+    ],
+    "gain": [
+     3.999999,
+     1.022529,
+     3.999999,
+     1.143351,
+     3.678013,
+     1.06459,
+     3.996284,
+     1.017144
+    ],
+    "raw_rms_sintel": [
+     0.024584,
+     0.000555,
+     0.023449,
+     2e-06,
+     0.007202,
+     1e-06,
+     0.028367,
+     8e-05
+    ],
+    "drive_std_sintel": [
+     3.867662,
+     0.112467,
+     3.868579,
+     0.000413,
+     2.86682,
+     0.000193,
+     3.899673,
+     0.016226
+    ],
+    "raw_rms_dots": [
+     0.18598,
+     0.001933,
+     0.174702,
+     2e-06,
+     0.030597,
+     1e-06,
+     0.076494,
+     7.3e-05
+    ],
+    "drive_std_dots": [
+     3.998559,
+     0.368689,
+     3.998364,
+     0.0004,
+     3.629849,
+     0.000182,
+     3.987754,
+     0.014928
+    ],
+    "monophasic_median_raw_rms_sintel": 0.024016,
+    "attenuation_vs_mono": [
+     0.976922,
+     43.253174,
+     1.024195,
+     13291.90332,
+     3.334505,
+     26525.287109,
+     0.846642,
+     301.045471
+    ],
+    "sintel_clips": 20
+   },
+   "params": {
+    "gain_mode": "contrast",
+    "temporal_mode": "typed",
+    "gain_range": [
+     1.0,
+     4.0
+    ]
+   },
+   "temporal": {
+    "checkpoint": "E003-typed@final",
+    "temporal": {
+     "dog_taps_abs_normalised": [
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.023000000044703484,
+       0.47699999809265137,
+       0.0,
+       -0.47699999809265137,
+       -0.023000000044703484
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.017000000923871994,
+       0.4830000102519989,
+       0.0,
+       -0.4830000102519989,
+       -0.017000000923871994
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.26899999380111694,
+       0.23100000619888306,
+       0.0,
+       -0.23100000619888306,
+       -0.26899999380111694
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.014999999664723873,
+       0.48500001430511475,
+       0.0,
+       -0.48500001430511475,
+       -0.014999999664723873
+      ]
+     ],
+     "dog_offcentre_mass": [
+      0.007699999958276749,
+      1.0,
+      0.007699999958276749,
+      1.0,
+      0.007699999958276749,
+      1.0,
+      0.007699999958276749,
+      1.0
+     ],
+     "gabor_side_frame_weight": [
+      0.0038999998942017555,
+      0.016599999740719795,
+      0.0038999998942017555,
+      0.004600000102072954,
+      0.004000000189989805,
+      0.01140000019222498,
+      0.0038999998942017555,
+      0.005900000222027302,
+      0.00989999994635582,
+      0.0038999998942017555,
+      0.009800000116229057,
+      0.0038999998942017555,
+      0.008899999782443047,
+      0.007699999958276749,
+      0.0038999998942017555,
+      0.004000000189989805
+     ]
+    },
+    "mix": {
+     "gabor_on_off_imbalance": [
+      0.9980000257492065,
+      0.9259999990463257,
+      0.5230000019073486,
+      0.4169999957084656,
+      0.5720000267028809,
+      0.9760000109672546,
+      0.5830000042915344,
+      0.7049999833106995,
+      0.3779999911785126,
+      0.8209999799728394,
+      0.49799999594688416,
+      0.753000020980835,
+      0.5550000071525574,
+      0.28600001335144043,
+      0.847000002861023,
+      0.8090000152587891
+     ],
+     "dog_neuron_share_of_gabor_input": [
+      0.15000000596046448,
+      0.07800000160932541,
+      0.12300000339746475,
+      0.10000000149011612,
+      0.19900000095367432,
+      0.0860000029206276,
+      0.1899999976158142,
+      0.07400000095367432
+     ]
+    },
+    "sintel_freeze": {
+     "normal": {
+      "all": 1.785,
+      "noc": 1.027,
+      "occ": 11.888,
+      "0-1": 0.199,
+      "1-4": 0.342,
+      "4-16": 0.867,
+      "16-1000000000.0": 6.987
+     },
+     "freeze": {
+      "all": 1.803,
+      "noc": 1.035,
+      "occ": 12.039,
+      "0-1": 0.2,
+      "1-4": 0.338,
+      "4-16": 0.88,
+      "16-1000000000.0": 7.063
+     },
+     "feature_rel_change_mean": 0.0353,
+     "feature_rel_change_max": 0.1624
+    },
+    "drive": {
+     "drive_std": [
+      3.7070000171661377,
+      0.0820000022649765,
+      3.8510000705718994,
+      0.0,
+      2.881999969482422,
+      0.0,
+      3.7669999599456787,
+      0.01600000075995922
+     ],
+     "frac_abs_gt1": [
+      0.4749999940395355,
+      0.0,
+      0.4869999885559082,
+      0.0,
+      0.4440000057220459,
+      0.0,
+      0.5249999761581421,
+      0.0
+     ]
+    },
+    "rdk_camouflage": {
+     "clean": 0.275,
+     "clean_noc": 0.271,
+     "clean_occ": 0.853,
+     "final": 0.277,
+     "final_noc": 0.273,
+     "final_occ": 0.854
+    },
+    "rdk_visible": {
+     "clean": 0.256,
+     "clean_noc": 0.251,
+     "clean_occ": 1.067,
+     "final": 0.259,
+     "final_noc": 0.254,
+     "final_occ": 1.051
+    }
+   }
+  },
+  "patterns": {
+   "checkpoint": "E003-typed@final",
+   "max_scenes": 0,
+   "band": 4,
+   "iters": 32,
+   "occluded": {
+    "clean": {
+     "texture": {
+      "all": 0.2762,
+      "object": 1.0385,
+      "hole": null,
+      "boundary": 1.9771,
+      "background": 0.1681
+     },
+     "shape": {
+      "all": 0.2762,
+      "object": 1.0385,
+      "hole": null,
+      "boundary": 1.9771,
+      "background": 0.1681
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.2764,
+      "object": 1.0383,
+      "hole": null,
+      "boundary": 1.9771,
+      "background": 0.1683
+     },
+     "shape": {
+      "all": 0.2764,
+      "object": 1.0383,
+      "hole": null,
+      "boundary": 1.9771,
+      "background": 0.1683
+     },
+     "pairs": 520
+    }
+   },
+   "hollow": {
+    "clean": {
+     "texture": {
+      "all": 0.2652,
+      "object": 4.8151,
+      "hole": 0.172,
+      "boundary": 2.4131,
+      "background": 0.1611
+     },
+     "shape": {
+      "all": 0.5426,
+      "object": 4.856,
+      "hole": 4.8426,
+      "boundary": 2.4618,
+      "background": 0.1611
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.2653,
+      "object": 4.8151,
+      "hole": 0.1719,
+      "boundary": 2.4129,
+      "background": 0.1613
+     },
+     "shape": {
+      "all": 0.5428,
+      "object": 4.856,
+      "hole": 4.8425,
+      "boundary": 2.4615,
+      "background": 0.1613
+     },
+     "pairs": 520
+    }
+   },
+   "roi": {
+    "clean": {
+     "texture": {
+      "all": 0.1796,
+      "object": 0.1535,
+      "hole": null,
+      "boundary": 0.3467,
+      "background": 0.1766
+     },
+     "shape": {
+      "all": 0.5522,
+      "object": 4.748,
+      "hole": null,
+      "boundary": 2.5418,
+      "background": 0.1766
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.1802,
+      "object": 0.1583,
+      "hole": null,
+      "boundary": 0.3474,
+      "background": 0.1769
+     },
+     "shape": {
+      "all": 0.5524,
+      "object": 4.7482,
+      "hole": null,
+      "boundary": 2.541,
+      "background": 0.1769
+     },
+     "pairs": 520
+    }
+   },
+   "visible": {
+    "clean": {
+     "texture": {
+      "all": 0.2555,
+      "object": 0.7675,
+      "hole": null,
+      "boundary": 1.8624,
+      "background": 0.1691
+     },
+     "shape": {
+      "all": 0.2555,
+      "object": 0.7675,
+      "hole": null,
+      "boundary": 1.8624,
+      "background": 0.1691
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.2577,
+      "object": 0.7954,
+      "hole": null,
+      "boundary": 1.8721,
+      "background": 0.1692
+     },
+     "shape": {
+      "all": 0.2577,
+      "object": 0.7954,
+      "hole": null,
+      "boundary": 1.8721,
+      "background": 0.1692
+     },
+     "pairs": 520
+    }
+   }
+  },
+  "probes": {
+   "files": [
+    "probe_dog_heatmap_E003.png",
+    "probe_maps_E003.png"
+   ]
+  },
+  "static_viz": {
+   "context_ablation_epe": {
+    "normal": {
+     "all": 0.3113424554467201,
+     "object interior": 0.8711623581787784,
+     "boundary": 1.677469750784011,
+     "background": 0.20889313883500768
+    },
+    "inp = 0": {
+     "all": 0.28604763829045826,
+     "object interior": 0.7938346998929439,
+     "boundary": 1.6803728059330454,
+     "background": 0.18628627194407754
+    },
+    "net = 0": {
+     "all": 0.3995275812016593,
+     "object interior": 1.6694881104620056,
+     "boundary": 2.073688494092056,
+     "background": 0.22987681055304027
+    },
+    "inp = net = 0": {
+     "all": 0.39666638937261367,
+     "object interior": 1.3694490910654962,
+     "boundary": 2.0080551307262935,
+     "background": 0.2522252349499294
+    },
+    "context from another scene": {
+     "all": 0.3207631847924656,
+     "object interior": 0.966660118822058,
+     "boundary": 1.749145073782384,
+     "background": 0.2090708319810308
+    }
+   }
+  },
+  "motion": {
+   "checkpoint": "E003-typed@final",
+   "light": false,
+   "fps": 6,
+   "scenes": [
+    {
+     "name": "scene0_occluded",
+     "n_frames": 24,
+     "epe": 0.408,
+     "epe_pair_only": 0.411,
+     "epe_boundary": 2.8192,
+     "epe_shape_inside": null
+    },
+    {
+     "name": "scene0_hollow",
+     "n_frames": 24,
+     "epe": 0.4551,
+     "epe_pair_only": 0.4578,
+     "epe_boundary": 3.3997,
+     "epe_shape_inside": 8.3054
+    },
+    {
+     "name": "scene0_roi",
+     "n_frames": 24,
+     "epe": 0.3066,
+     "epe_pair_only": 0.3097,
+     "epe_boundary": 0.4051,
+     "epe_shape_inside": 7.88
+    },
+    {
+     "name": "scene0_visible",
+     "n_frames": 24,
+     "epe": 0.3816,
+     "epe_pair_only": 0.385,
+     "epe_boundary": 2.4089,
+     "epe_shape_inside": null
+    }
+   ],
+   "dog_labels": [
+    "0 mono",
+    "1 bi",
+    "2 mono",
+    "3 bi",
+    "4 mono",
+    "5 bi",
+    "6 mono",
+    "7 bi"
+   ],
+   "dog_object_over_background": [
+    0.92,
+    0.614,
+    0.929,
+    2.797,
+    0.927,
+    0.891,
+    0.929,
+    3.048
+   ],
+   "dog_silent": [
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true
+   ]
+  }
+ },
+ "failed_stages": [],
+ "flags": [
+  "DoG 1 (bi): raw Sintel response 43\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 3 (bi): raw Sintel response 13,292\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 5 (bi): raw Sintel response 26,525\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 7 (bi): raw Sintel response 301\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 1 (bi): centre \u03c3 0.709 \u2248 surround \u03c3 0.740, so the spatial kernel nearly cancels (spatial L1 0.0543) (frontend/silencing_check.json)",
+  "DoG 3 (bi): centre \u03c3 4.495 \u2248 surround \u03c3 4.496, so the spatial kernel nearly cancels (spatial L1 0.0004) (frontend/silencing_check.json)",
+  "DoG 5 (bi): centre \u03c3 4.940 \u2248 surround \u03c3 4.941, so the spatial kernel nearly cancels (spatial L1 0.0002) (frontend/silencing_check.json)",
+  "DoG 7 (bi): centre \u03c3 4.931 \u2248 surround \u03c3 4.967, so the spatial kernel nearly cancels (spatial L1 0.0081) (frontend/silencing_check.json)",
+  "DoG 0 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 2 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 6 (mono): gain 3.996 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "scene0_occluded: pair-only input gives the same EPE as the full clip (0.411 vs 0.408): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_hollow: pair-only input gives the same EPE as the full clip (0.458 vs 0.455): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_roi: pair-only input gives the same EPE as the full clip (0.310 vs 0.307): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_visible: pair-only input gives the same EPE as the full clip (0.385 vs 0.382): the extra clip frames are not used here (motion/summary.json)",
+  "no active DoG neuron responds more inside moving objects than on the background (max ratio 0.93) (motion/summary.json)",
+  "hollow: inside the ring (hole) the predicted flow follows the DOTS, not the shape motion (EPE vs texture 0.17, vs shape 4.84) (patterns/random_patterns.json, clean)",
+  "roi: inside the ROI the predicted flow follows the DOTS, not the shape motion (EPE vs texture 0.15, vs shape 4.75) (patterns/random_patterns.json, clean)"
+ ]
+}

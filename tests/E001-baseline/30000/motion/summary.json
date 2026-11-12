@@ -1,0 +1,69 @@
+{
+ "checkpoint": "E001-baseline@30000",
+ "light": false,
+ "fps": 6,
+ "scenes": [
+  {
+   "name": "scene0_occluded",
+   "n_frames": 24,
+   "epe": 0.3603,
+   "epe_pair_only": 0.363,
+   "epe_boundary": 3.0281,
+   "epe_shape_inside": null
+  },
+  {
+   "name": "scene0_hollow",
+   "n_frames": 24,
+   "epe": 0.3871,
+   "epe_pair_only": 0.39,
+   "epe_boundary": 3.3947,
+   "epe_shape_inside": 8.4084
+  },
+  {
+   "name": "scene0_roi",
+   "n_frames": 24,
+   "epe": 0.2401,
+   "epe_pair_only": 0.2428,
+   "epe_boundary": 0.4349,
+   "epe_shape_inside": 7.938
+  },
+  {
+   "name": "scene0_visible",
+   "n_frames": 24,
+   "epe": 0.3414,
+   "epe_pair_only": 0.3441,
+   "epe_boundary": 2.7537,
+   "epe_shape_inside": null
+  }
+ ],
+ "dog_labels": [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7"
+ ],
+ "dog_object_over_background": [
+  0.911,
+  0.895,
+  0.92,
+  0.368,
+  0.115,
+  0.564,
+  0.9,
+  0.001
+ ],
+ "dog_silent": [
+  true,
+  true,
+  false,
+  true,
+  true,
+  true,
+  false,
+  true
+ ]
+}

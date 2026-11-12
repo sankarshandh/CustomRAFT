@@ -1,0 +1,59 @@
+{
+  "_doc": "Fixed stimuli and thresholds for tools/pipeline.py. Change only with a note in tests/README.md: results are compared across experiments, so every experiment must be measured on the same input.",
+  "light_steps": 4,
+  "iters": 32,
+  "metrics": {
+    "sintel_light_max_pairs": 100
+  },
+  "motion": {
+    "seed": 0,
+    "pairs": 24,
+    "light_pairs": 12,
+    "tile_h": 96,
+    "fps": 6,
+    "jpeg_quality": 80,
+    "scenes": [
+      {
+        "scene": 0,
+        "case": "occluded"
+      },
+      {
+        "scene": 0,
+        "case": "hollow"
+      },
+      {
+        "scene": 0,
+        "case": "roi"
+      },
+      {
+        "scene": 0,
+        "case": "visible"
+      }
+    ]
+  },
+  "static_viz": {
+    "scene": 0,
+    "seed": 0
+  },
+  "probes": {
+    "seeds": 6
+  },
+  "flags": {
+    "attenuation_vs_mono": 10.0,
+    "centre_surround_rel_gap": 0.05,
+    "gain_at_bound_rel": 0.01,
+    "freeze_feature_change": 0.01,
+    "gabor_input_share": 0.02,
+    "pair_only_epe_rel": 0.02,
+    "epe_delta_vs_parent": 0.1,
+    "dog_motion_ratio": 1.1,
+    "pattern_shape_vs_texture": 0.5
+  },
+  "random_patterns": {
+    "cases": "occluded,hollow,roi,visible",
+    "passes": "clean,final",
+    "max_scenes": 0,
+    "light_passes": "clean",
+    "light_max_scenes": 4
+  }
+}

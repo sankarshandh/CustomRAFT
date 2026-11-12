@@ -1,0 +1,82 @@
+{
+ "checkpoint": "E001-baseline@15000",
+ "max_scenes": 4,
+ "band": 4,
+ "iters": 32,
+ "occluded": {
+  "clean": {
+   "texture": {
+    "all": 0.4214,
+    "object": 1.0749,
+    "hole": null,
+    "boundary": 2.3671,
+    "background": 0.3368
+   },
+   "shape": {
+    "all": 0.4214,
+    "object": 1.0749,
+    "hole": null,
+    "boundary": 2.3671,
+    "background": 0.3368
+   },
+   "pairs": 52
+  }
+ },
+ "hollow": {
+  "clean": {
+   "texture": {
+    "all": 0.4154,
+    "object": 5.4856,
+    "hole": 0.3869,
+    "boundary": 2.7554,
+    "background": 0.3225
+   },
+   "shape": {
+    "all": 0.6727,
+    "object": 5.4856,
+    "hole": 5.7828,
+    "boundary": 2.7554,
+    "background": 0.3225
+   },
+   "pairs": 52
+  }
+ },
+ "roi": {
+  "clean": {
+   "texture": {
+    "all": 0.3466,
+    "object": 0.2635,
+    "hole": null,
+    "boundary": 0.7269,
+    "background": 0.3426
+   },
+   "shape": {
+    "all": 0.6595,
+    "object": 5.1435,
+    "hole": null,
+    "boundary": 2.809,
+    "background": 0.3426
+   },
+   "pairs": 52
+  }
+ },
+ "visible": {
+  "clean": {
+   "texture": {
+    "all": 0.4162,
+    "object": 0.955,
+    "hole": null,
+    "boundary": 2.3203,
+    "background": 0.3395
+   },
+   "shape": {
+    "all": 0.4162,
+    "object": 0.955,
+    "hole": null,
+    "boundary": 2.3203,
+    "background": 0.3395
+   },
+   "pairs": 52
+  }
+ }
+}
