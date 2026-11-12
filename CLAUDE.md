@@ -4,6 +4,8 @@ RAFT-small whose feature encoder is a learnable spatiotemporal DoG → Gabor fro
 Python env: conda `motion`. Data: `D:\IISc\Motion Datasets\` (Sintel, RandomDot, `generate_random_dot.py`).
 
 ## Start here
+- New session: run `/catchup` (or read `kb/INDEX.md`, starting with its "Now" section).
+- At the end of a session, propose an updated "Now" section (3–5 lines) and write it after the user approves.
 - Read `kb/INDEX.md` first. Open a card, finding or study only when you need it, and `kb/legacy/` only as a last resort.
 - `kb/legacy/` is the old KB, kept verbatim. Never edit it.
 

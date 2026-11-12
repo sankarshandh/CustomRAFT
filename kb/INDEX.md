@@ -3,6 +3,12 @@
 **Read this file first.** Then open only the card, finding or study a row points to. Go to `kb/legacy/` (the old KB, kept verbatim) or raw files in `analysis/` only when those are not enough.
 Everything here is filled in by hand, together: a row is trusted once its `reviewed` column is set.
 
+## Now (updated 2026-11-12)
+- Nothing training. Last experiment: E003-typed (done).
+- Pending: your decisions on E003-R1 recommendations 1–6.
+- KB still empty: E000–E002 cards, S001 study write-up, glossary beyond 6 terms.
+- Next likely step: decide E003-R1 → E004 (typed + min centre/surround gap).
+
 ## Project
 (3 lines: what the model is, what it is trained on, the main question)
 
