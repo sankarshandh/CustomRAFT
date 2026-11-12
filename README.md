@@ -14,6 +14,8 @@ python tools/check_compat.py                                             # past 
 Code, configs, cards and the KB are in git. Runs, checkpoints and figures stay on disk only (see `.gitignore`).
 Each experiment has a **tag** with the same name as its folder (`E001-baseline`, `E002-contrast`, `E003-typed`). E000 has no tag because its code is gone.
 
+> **Note on E001–E003:** these three were migrated together, so their tags point at the same import commit. Their code is identical, and they differ only in `config.json` (E002: `dog_gain_mode`, E003: `temporal_mode`). So `git diff` between them is empty, and `git describe` may name any of the three. Use the config comparison below for them. From E004 on, each tag gets its own commit and the code diffs become meaningful.
+
 | I want to… | Command |
 |---|---|
 | list all experiments | `git tag` (or `ls experiments`) |
