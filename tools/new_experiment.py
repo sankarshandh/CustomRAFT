@@ -90,7 +90,7 @@ def main():
     with open(osp.join(out, 'config.json'), 'w') as f:
         json.dump(cfg, f, indent=2)
     card = open(osp.join(ROOT, 'kb', 'templates', 'card.md'), encoding='utf-8').read()
-    card = card.replace('E00N-name', a.name).replace('E00M-name', parent_id or 'none')
+    card = card.replace('E00N-name', a.name).replace('E00M-name', parent_id or 'none').replace('E00N-', a.name[:4] + '-')
     with open(osp.join(out, 'card.md'), 'w', encoding='utf-8') as f:
         f.write(card)
     rel = f'experiments/{a.name}'

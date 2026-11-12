@@ -1,8 +1,8 @@
-# F01: Biphasic DoG units that cannot collapse are silenced spatially
+# E003-F1: Biphasic DoG units that cannot collapse are silenced spatially
 
 | id | confidence | reviewed |
 |---|---|---|
-| F01 | moderate: one run and one seed, but the mechanism is directly visible in the parameters | sankarshan.dh, 2026-11-12 |
+| E003-F1 | moderate: one run and one seed, but the mechanism is directly visible in the parameters | sankarshan.dh, 2026-11-12 |
 
 ## Claim
 On Sintel, when DoG neurons are forced to be biphasic in time, training silences them by making their spatial centre and surround equal, at no EPE cost.

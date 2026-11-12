@@ -16,7 +16,7 @@ Python env: conda `motion`. Data: `D:\IISc\Motion Datasets\` (Sintel, RandomDot,
   - `runs/<run>/`: logs, metrics, filters, `git_commit.txt`, `code_snapshot/`
   - `checkpoints/<step>.pth` and `final.pth`
   - `analysis/<tool>/<step>/`
-- `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `glossary.md`, `backlog.md`, `templates/`
+- `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `questions.md`, `reviews/`, `glossary.md`, `backlog.md`, `templates/`
 - `scratch/`: throwaway output (git-ignored)
 
 ## Checkpoint references
@@ -38,6 +38,23 @@ Tools and `evaluate.load_model` accept `E003` (final checkpoint), `E003@30000`, 
 ## Outputs
 - An analysis of one experiment goes to `experiments/E00N/analysis/`.
 - A comparison across experiments is a study and goes to `kb/studies/S00N-name/data` and `figures`.
+
+## KB flow and IDs
+```
+question (Q) ──► review / plan (R) ──► idea (backlog #) ──► experiment (E) ──► finding (F)
+       └──────────── answered directly by a study (S) ────────────────────────────┘
+```
+- **IDs carry their origin:** `E003-F1` is the first finding that came out of E003. `-Q` is a question and `-R` a review.
+  - `G-Q1` and `G-R1` are general, not tied to one experiment.
+  - Studies are `S001…`, because they compare experiments.
+  - Later evidence from other experiments goes into the same item; the ID never changes.
+- **New question:** add a row to `kb/questions.md`. Close it as `answered → <id>`.
+- **New idea:** add a row to `kb/backlog.md`. When it becomes an experiment, set its status to the E id.
+- **Review or plan the user asks for:**
+  1. Draft it in chat first.
+  2. After approval, write it to `kb/reviews/<id>-<date>-<topic>.md` from `kb/templates/review.md`, at most 60 lines.
+  3. The user fills in Decision for each recommendation. Accepted items become backlog rows or experiments.
+- `kb/INDEX.md` lists open questions (top 3–5), all reviews (one line each), findings and experiments.
 
 ## KB rules
 - **The KB is filled together with the user, never automatically.**

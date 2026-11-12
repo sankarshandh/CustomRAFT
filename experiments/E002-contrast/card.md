@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | E002-contrast | E001-baseline | planned / running / done / stopped | start → end | git tag | who, date |
 
-Run: `experiments/E002-contrast/runs/<run>/` · Config: [config.json](config.json) · Findings: F.., F..
+Run: `experiments/E002-contrast/runs/<run>/` · Config: [config.json](config.json) · Findings: E00N-F1, … · Questions: E00N-Q1, … · Reviews: E00N-R1, …
 
 ## Question
 (one line: what this experiment tests)

@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | E001-baseline | none | planned / running / done / stopped | start → end | git tag | who, date |
 
-Run: `experiments/E001-baseline/runs/<run>/` · Config: [config.json](config.json) · Findings: F.., F..
+Run: `experiments/E001-baseline/runs/<run>/` · Config: [config.json](config.json) · Findings: E00N-F1, … · Questions: E00N-Q1, … · Reviews: E00N-R1, …
 
 ## Question
 (one line: what this experiment tests)
