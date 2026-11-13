@@ -54,6 +54,7 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 | [E003-D2](discussions/E003-D2-2026-11-12-why-biphasic-silenced.md) | Why are the biphasic units silenced: dataset, capability or architecture? | resolved | architecture: correlation is the only encoder-to-flow path (EPE 1.23 → 12.86 without it); whole front end went per-frame |
 | [E003-D3](discussions/E003-D3-2026-11-12-next-experiments.md) | Given E003-D2, what should the next experiments be? | open | pending decisions: direct motion path (E004), fixed front end, success criteria first |
 | [E003-D4](discussions/E003-D4-2026-11-13-input-manipulations.md) | Can changing the training input (temporal noise, asymmetric views) make the front end use time? | open | – |
+| [E003-D5](discussions/E003-D5-2026-11-13-retinal-hypothesis.md) | Where does the "retinal bandpass filters → motion" hypothesis go wrong? | open | front end is read only by matching; the correlation already does delay-and-compare; proposed: direct motion path |
 | [G-D1](discussions/G-D1-2026-11-12-id-numbering.md) | Do E, S and F numbers match? | resolved | IDs carry their origin: E003-F1, E003-Q1, …; G- for general |
 
 ## Next up

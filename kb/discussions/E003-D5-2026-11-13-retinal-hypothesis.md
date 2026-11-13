@@ -1,0 +1,17 @@
+# E003-D5: Where does the "retinal bandpass filters → motion" hypothesis go wrong?
+
+| id | about | started | status | reviewed |
+|---|---|---|---|---|
+| E003-D5 | project hypothesis, [E003-D2](E003-D2-2026-11-12-why-biphasic-silenced.md), [E003-D4](E003-D4-2026-11-13-input-manipulations.md), E004 (scratch-p03), E003-Q4 | 2026-11-13 | open | sankarshan.dh, 2026-11-13 |
+
+## Thread
+- 2026-11-13 · sankarshan.dh: Origin of the hypothesis. In random-dot motion I see the square when the frames play, but not frame by frame. Retinal cells have bandpass spatiotemporal filters, so I mimicked them in the front end. Where am I going wrong?
+- 2026-11-13 · Claude: The observation shows that *change* is needed, not that a *temporal filter* is needed. Two frames suffice: E003 on camouflaged dots gets the same EPE from the pair alone as from the full 8-frame clip (0.411 vs 0.408). (evidence: tests/E003-typed/final/report.md)
+- 2026-11-13 · Claude: RAFT's correlation already detects motion by comparing frames: frame t at one position against t+1 at a shifted position (delay-and-compare). Without the correlation the model is no better than zero flow. The filters and the correlation compete for one job, and training keeps the correlation. (evidence: E003-D2, experiments/E003-typed/analysis/corr_ablation/final/corr_ablation.json)
+- 2026-11-13 · Claude: The front end is read only as "what is here?" (matching), never as "how is it moving?". A temporal response is the same everywhere on a rigidly moving object, so it cannot tell the matcher where a patch went; training silences it. This explains why closing a silencing route, fine-tuning (E004 main run) and training from scratch (E004 scratch-p03 at 10k) all end the same way. (evidence: E004 card steps 1–2; runs/scratch-p03/filters/filters.jsonl at 10k, biphasic gaps 9.9 / 1.3 / 5.1 / 2.8%)
+- 2026-11-13 · Claude: Retinal centre-surround/biphasic filtering is mainly explained as efficient coding (removing redundancy and noise). Direction selectivity arises mostly later, in cortex, from units that combine space- and time-shifted inputs, and motion areas then read those out directly. The model copies the filters but not that direct readout. (background from the literature, not from our runs)
+- 2026-11-13 · Claude: Correction to E003-D4. Asymmetric views make temporal features necessary for *matching*, but predicting zero flow costs only about 1 px on those batches, and temporal features could be matched only at object edges. The shortcut was cheaper. (evidence: experiments/E004-asymviews/runs/scratch-p03/train_metrics_split.csv, asymmetric/zero-flow ratio 1.04–1.07 from 2k steps)
+- 2026-11-13 · Claude: Proposed tests: (1) a direct motion path: feed the Gabor responses into the update block beside the correlation (E003-Q4, E003-D3); (2) then a task where pairwise matching fails but motion survives over time (short dot lifetime, partly incoherent dots); (3) displacements small enough for the filter scale, since filter-based sensing breaks down when the step exceeds it.
+
+## Outcome
+Open. To settle: the user's view on whether the hypothesis is restated as "spatiotemporal filters help *if read out as motion*", and whether test (1) becomes the next experiment once E004 scratch-p03 finishes.
