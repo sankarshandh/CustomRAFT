@@ -19,7 +19,7 @@ Python env: conda `motion`. Data: `D:\IISc\Motion Datasets\` (Sintel, RandomDot,
   - `checkpoints/<step>.pth` and `final.pth`
   - `analysis/<tool>/<step>/`
 - `kb/`: `INDEX.md`, `findings/`, `studies/S00N-name/`, `questions.md`, `reviews/`, `discussions/`, `glossary.md`, `backlog.md`, `templates/`
-- `tests/<E00N-name>/<step>/`: pipeline output (`tools/pipeline.py`): `report.md`, `summary.json`, `index.html`, one folder per stage. Generated, not reviewed. `tests/README.md` lists them all.
+- `tests/<E00N-name>/<step>/`: pipeline output (`tools/pipeline.py`): `report.md`, `summary.json`, `index.html`, one folder per stage. Generated, not reviewed. `tests/README.md` lists them all. Tracked in git (reports, JSON, PNG figures); videos, frame sequences and stage logs are git-ignored. Commit them after each pipeline run.
 - `scratch/`: throwaway output (git-ignored)
 
 ## Checkpoint references
