@@ -10,6 +10,15 @@ python tools/check_compat.py                                             # past 
 python tools/pipeline.py E004                                            # test + visualise it -> tests/E004-name/
 ```
 
+## Setting up the environment on another machine
+
+The `motion` environment is Python 3.10 with PyTorch 2.8 (CUDA 12.6 build), NumPy, OpenCV, Pillow, Matplotlib and TensorBoard, all pinned to the versions used for training:
+```
+conda env create -f environment.yml && conda activate motion      # conda
+pip install -r requirements.txt                                    # or plain pip, in a Python 3.10 venv
+```
+Without CUDA 12.6, change the PyTorch lines in `requirements.txt` (see the note at its top). The data is not in the repo: Sintel and the RandomDot sets go under `D:\IISc\Motion Datasets\`, or set `SINTEL_ROOT`, `RANDOMDOT_ROOT` and `RDS_GENERATOR` to their locations.
+
 ## Testing and visualising a checkpoint
 
 After training, run the pipeline. It writes only to `tests/`, never to `kb/`.

@@ -1,0 +1,12 @@
+# CustomRAFT "motion" environment (exported 2026-11-13; portable: no Windows-only runtime packages, no local paths).
+#   conda env create -f environment.yml
+#   conda activate motion
+# The pip packages are the same as requirements.txt (PyTorch is the CUDA 12.6 build; see the note there).
+name: motion
+channels:
+  - defaults
+dependencies:
+  - python=3.10.0
+  - pip
+  - pip:
+      - -r requirements.txt
