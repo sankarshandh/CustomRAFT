@@ -32,11 +32,12 @@ import time
 import numpy as np
 import torch
 import torch.optim as optim
+from torch.utils.data import DataLoader
 
 sys.path.insert(0, osp.dirname(osp.abspath(__file__)))
 
 from core.custom_raft import CustomRAFT  # noqa: E402
-from core.datasets import DEFAULT_SINTEL_ROOT, fetch_dataloaders  # noqa: E402
+from core.datasets import DEFAULT_SINTEL_ROOT, RandomDotAsymmetric, fetch_dataloaders  # noqa: E402
 from core.utils.augmentor import ClipColorJitter  # noqa: E402
 from core.utils.filter_log import log_filters  # noqa: E402
 from evaluate import validate_sintel  # noqa: E402
@@ -216,6 +217,13 @@ def train(args):
     train_loader, _ = fetch_dataloaders(args.root, 'both', batch_size=args.batch_size, num_workers=args.num_workers,
                                         aug_params=aug_params, num_frames=model.num_frames,
                                         ref_offset=model.ref_offset, edge_mode=args.edge_mode)
+    asym_iter = None
+    if args.asym_prob > 0:  # asymmetric-view random-dot batches (kb/discussions/E003-D4); off by default
+        asym = RandomDotAsymmetric(model.num_frames, model.ref_offset, crop_size=args.image_size, seed=args.seed)
+        asym_loader = DataLoader(asym, batch_size=args.batch_size, shuffle=True, drop_last=True,
+                                 num_workers=max(1, args.num_workers // 2), pin_memory=True, persistent_workers=True)
+        asym_iter = iter(asym_loader)
+        print(f'asymmetric views: p = {args.asym_prob} of the steps use a random-dot asymmetric batch')
     color_jitter = ClipColorJitter()
     optimizer, scheduler = fetch_optimizer(args, model)
     scaler = torch.amp.GradScaler('cuda', enabled=args.mixed_precision)
@@ -236,6 +244,10 @@ def train(args):
     while total_steps < args.num_steps:
         for batch in train_loader:
             optimizer.zero_grad(set_to_none=True)
+            clip2 = None
+            if asym_iter is not None and np.random.rand() < args.asym_prob:
+                batch = next(asym_iter)  # replaces this Sintel batch
+                clip2 = color_jitter(batch['clip2'].to(device, non_blocking=True).float())
             clip = color_jitter(batch['clip'].to(device, non_blocking=True).float())
             flow = batch['flow'].to(device, non_blocking=True)
             valid = batch['valid'].to(device, non_blocking=True)
@@ -244,7 +256,7 @@ def train(args):
                 stdv = np.random.uniform(0.0, 5.0)
                 clip = (clip + stdv * torch.randn_like(clip)).clamp(0.0, 255.0)
 
-            flow_predictions = model(clip, iters=args.iters)
+            flow_predictions = model(clip, iters=args.iters, clip2=clip2)
             loss, metrics = sequence_loss(flow_predictions, flow, valid, args.gamma)
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
@@ -308,6 +320,10 @@ def build_parser():
     parser.add_argument('--dropout', type=float, default=0.0)
     parser.add_argument('--gamma', type=float, default=0.85, help='exponential weighting of the sequence loss')
     parser.add_argument('--add_noise', action='store_true')
+    parser.add_argument('--asym_prob', type=float, default=0.0,
+                        help='probability that a step uses an asymmetric-view random-dot batch instead of Sintel: '
+                             'fmap1 and fmap2 from two renderings of one scene that share only layout and motion '
+                             '(core/datasets.py RandomDotAsymmetric). 0 = original training')
     parser.add_argument('--edge_mode', default='replicate', choices=['replicate', 'skip'],
                         help="clips at sequence ends: 'replicate' keeps RAFT's full pair set, 'skip' drops them")
 

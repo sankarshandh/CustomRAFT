@@ -174,6 +174,56 @@ def single_thread_worker(_):
     torch.set_num_threads(1)
 
 
+RDS_GENERATOR = os.environ.get('RDS_GENERATOR', r'D:\IISc\Motion Datasets\generate_random_dot.py')
+
+
+class RandomDotAsymmetric(Dataset):
+    """Asymmetric-view training pairs rendered on the fly (train.py --asym_prob; kb/discussions/E003-D4).
+
+    One random-dot scene layout (generate_random_dot.make_scene: shapes, positions, velocities) is rendered twice
+    with independent dots: view A with VISIBLE objects (+60 grey), view B CAMOUFLAGED. The two views share only the
+    layout and the motion, so in B the outlines exist only as motion boundaries. Each sample returns
+        clip   (3, T, H, W) float 0..255, the view that feeds fmap1 (and the context encoder)
+        clip2  (3, T, H, W) the other view, feeds fmap2
+        flow   (2, H, W) ground truth for the pair (ref, ref + 1); valid (H, W) all ones
+    Which view feeds fmap1 is random (50/50), so 'fmap2 is camouflaged' is not a usable shortcut. Item i is
+    deterministic (seeded by i); the scene statistics are the generator's defaults (50% moving background)."""
+
+    def __init__(self, num_frames, ref_offset, crop_size=(368, 768), length=10 ** 7, seed=0,
+                 generator=RDS_GENERATOR):
+        import importlib.util
+        from types import SimpleNamespace
+        spec = importlib.util.spec_from_file_location('generate_random_dot', generator)
+        self.gen = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.gen)
+        self.T, self.ref, self.length, self.seed = num_frames, ref_offset, length, seed
+        self.args = SimpleNamespace(num_frames=num_frames, height=crop_size[0], width=crop_size[1], dot_size=2,
+                                    dot_mode='binary', density=0.5, object_density=None, object_offset=0.0,
+                                    dot_lifetime=0, object_type='solid', shapes='all', max_objects=2, min_size=48,
+                                    max_size=160, min_speed=1.0, max_speed=8.0, static_bg_prob=0.5,
+                                    bg_max_speed=3.0, subpixel=1)
+
+    def __len__(self):
+        return self.length
+
+    def _render(self, desc, tex_seed, offset):
+        a = vars(self.args) | {'object_offset': offset}
+        from types import SimpleNamespace
+        frames, labels, flows, _ = self.gen.render_scene(np.random.default_rng(tex_seed), desc, SimpleNamespace(**a))
+        return frames, flows
+
+    def __getitem__(self, i):
+        desc = self.gen.make_scene(np.random.default_rng([self.seed, i]), self.args)
+        # make_scene centres positions on frame T // 2; the pair is (ref, ref + 1)
+        a, flows = self._render(desc, [self.seed, i, 1], 60.0)
+        b, _ = self._render(desc, [self.seed, i, 2], 0.0)
+        if np.random.default_rng([self.seed, i, 3]).random() < 0.5:
+            a, b = b, a
+        to_clip = lambda f: torch.from_numpy(np.ascontiguousarray(f)).float()[None].expand(3, -1, -1, -1).clone()
+        flow = torch.from_numpy(flows[self.ref]).permute(2, 0, 1).float()
+        return {'clip': to_clip(a), 'clip2': to_clip(b), 'flow': flow, 'valid': torch.ones(flow.shape[1:])}
+
+
 def fetch_dataloaders(root=DEFAULT_SINTEL_ROOT, dstype='both', val_scenes=None,
                       crop_size=(368, 768), batch_size=6, num_workers=4, aug_params=None, **clip_kwargs):
     """Return (train_loader, val_loader). val_loader uses batch size 1 (full 436x1024 frames)."""

@@ -1,0 +1,53 @@
+{
+  "id": "E004-asymviews",
+  "parent": "E003-typed",
+  "created": "2026-11-13",
+  "changes_vs_parent": {
+    "asym_prob": [
+      null,
+      0.3
+    ],
+    "restore_ckpt": [
+      null,
+      "experiments/E003-typed/checkpoints/final.pth"
+    ],
+    "num_steps": [
+      100000,
+      30000
+    ],
+    "lr": [
+      0.0004,
+      0.000125
+    ]
+  },
+  "args": {
+    "root": "D:\\IISc\\Motion Datasets\\Sintel",
+    "restore_ckpt": "experiments/E003-typed/checkpoints/final.pth",
+    "temporal_mode": "typed",
+    "dog_gain_mode": "contrast",
+    "lr": 0.000125,
+    "bio_lr_mult": 20.0,
+    "num_steps": 30000,
+    "batch_size": 6,
+    "image_size": [
+      368,
+      768
+    ],
+    "mixed_precision": true,
+    "iters": 12,
+    "wdecay": 1e-05,
+    "epsilon": 1e-08,
+    "clip": 1.0,
+    "dropout": 0.0,
+    "gamma": 0.85,
+    "add_noise": false,
+    "edge_mode": "replicate",
+    "num_workers": 10,
+    "sum_freq": 100,
+    "val_freq": 5000,
+    "val_iters": 32,
+    "val_max_pairs": 200,
+    "seed": 1234,
+    "asym_prob": 0.3
+  }
+}

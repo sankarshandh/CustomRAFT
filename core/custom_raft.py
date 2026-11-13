@@ -41,14 +41,18 @@ class CustomRAFT(nn.Module):
     def bio_parameters(self):
         return self.fnet.bio_parameters()
 
-    def forward(self, clip, iters=12, flow_init=None, test_mode=False):
+    def forward(self, clip, iters=12, flow_init=None, test_mode=False, clip2=None):
         """clip: (B, 3, num_frames, H, W) in [0, 255] (uint8 or float), H and W divisible by 8.
+        clip2 (optional, same shape): asymmetric views. fmap1 comes from clip and fmap2 from clip2 (the window
+        centred on the next frame); the context encoder still sees clip. None = the original model.
         Returns a list of (B, 2, H, W) predictions, or (flow_low, flow_up) when test_mode."""
         clip = (2 * (clip.float() / 255.0) - 1.0).contiguous()
         amp = torch.autocast('cuda', enabled=self.mixed_precision)
 
         with amp:
             fmap1, fmap2 = self.fnet(clip)
+            if clip2 is not None:
+                fmap2 = self.fnet((2 * (clip2.float() / 255.0) - 1.0).contiguous())[1]
         with torch.autocast('cuda', enabled=False):  # all-pairs correlation in fp32
             corr_fn = CorrPyramid(fmap1.float(), fmap2.float(), self.corr_levels, self.corr_radius)
 
