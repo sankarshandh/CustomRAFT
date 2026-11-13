@@ -89,6 +89,41 @@ def fetch_optimizer(args, model):
     return optimizer, scheduler
 
 
+class SplitLog:
+    """--asym_prob > 0 only: Sintel and asymmetric-batch metrics averaged separately, every sum_freq steps, in
+    train_metrics_split.csv (train_metrics.csv mixes both). zero_flow_epe_asym = EPE of predicting zero on the same
+    asymmetric batches: the shortcut level (kb/reviews/E004-R1)."""
+
+    def __init__(self, log_dir, sum_freq):
+        self.path, self.sum_freq = osp.join(log_dir, 'train_metrics_split.csv'), sum_freq
+        self.acc = {}
+
+    def push(self, step, is_asym, metrics, flow, valid):
+        kind = 'asym' if is_asym else 'sintel'
+        for k in ('epe', 'loss'):
+            self.acc[f'{kind}_{k}'] = self.acc.get(f'{kind}_{k}', 0.0) + metrics[k]
+        self.acc[f'n_{kind}'] = self.acc.get(f'n_{kind}', 0) + 1
+        if is_asym:
+            z = (flow.norm(dim=1)[valid > 0.5]).mean().item()
+            self.acc['zero_flow_epe_asym'] = self.acc.get('zero_flow_epe_asym', 0.0) + z
+        if step % self.sum_freq == 0:
+            row = {'step': step}
+            for kind in ('sintel', 'asym'):
+                n = self.acc.get(f'n_{kind}', 0)
+                row[f'n_{kind}'] = n
+                for k in ('epe', 'loss'):
+                    row[f'{kind}_{k}'] = self.acc[f'{kind}_{k}'] / n if n else ''
+            n = self.acc.get('n_asym', 0)
+            row['zero_flow_epe_asym'] = self.acc['zero_flow_epe_asym'] / n if n else ''
+            new = not osp.exists(self.path)
+            with open(self.path, 'a', newline='') as f:
+                w = csv.DictWriter(f, fieldnames=list(row))
+                if new:
+                    w.writeheader()
+                w.writerow(row)
+            self.acc = {}
+
+
 class Logger:
     def __init__(self, log_dir, scheduler, sum_freq):
         self.log_dir, self.scheduler, self.sum_freq = log_dir, scheduler, sum_freq
@@ -206,7 +241,7 @@ def train(args):
     print(f'Parameter count: {count_parameters(model)}  (RAFT-small: 990162)')
     print(f'clip: {model.num_frames} frames, flow between clip frames {model.ref_offset} -> {model.ref_offset + 1}')
 
-    if args.restore_ckpt is not None:
+    if args.restore_ckpt not in (None, '', 'none'):  # 'none' overrides a config's restore_ckpt: train from scratch
         ckpt = torch.load(args.restore_ckpt, map_location=device)
         model.load_state_dict(ckpt['model'] if 'model' in ckpt else ckpt, strict=False)
     model.train()
@@ -241,6 +276,7 @@ def train(args):
     log_filters(model.fnet, 0, osp.join(log_dir, 'filters'), logger.writer)
 
     total_steps, t0 = 0, time.time()
+    split = SplitLog(log_dir, args.sum_freq) if asym_iter is not None else None
     while total_steps < args.num_steps:
         for batch in train_loader:
             optimizer.zero_grad(set_to_none=True)
@@ -267,6 +303,8 @@ def train(args):
 
             metrics['loss'] = loss.item()
             logger.push(metrics)
+            if split is not None:
+                split.push(total_steps + 1, clip2 is not None, metrics, flow, valid)
             total_steps += 1
 
             if total_steps % args.val_freq == 0 or total_steps == args.num_steps:
@@ -298,7 +336,7 @@ def build_parser():
     parser.add_argument('--name', default='customraft',
                         help='run name (with --exp: defaults to the experiment folder name = the main run)')
     parser.add_argument('--root', default=DEFAULT_SINTEL_ROOT)
-    parser.add_argument('--restore_ckpt', help='restore checkpoint')
+    parser.add_argument('--restore_ckpt', help="restore checkpoint ('none' = from scratch, overriding config.json)")
     parser.add_argument('--temporal_mode', default='free', choices=['free', 'bandpass', 'typed'],
                         help="DoG temporal kernels: 'free' (learnable k_t and delays), 'bandpass' (zero-DC ablation) or "
                              "'typed' (even neurons fixed monophasic, odd neurons fixed biphasic; only the band is learned)")

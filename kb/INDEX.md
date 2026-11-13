@@ -22,6 +22,7 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 | [E001-baseline](../experiments/E001-baseline/card.md) | – | | | | | |
 | [E002-contrast](../experiments/E002-contrast/card.md) | E001 | | | | | |
 | [E003-typed](../experiments/E003-typed/card.md) | E002 | DoG temporal type fixed: 4 monophasic + 4 biphasic | done | 1.51 / 2.00 (full) | inconclusive: biphasic units silenced spatially; EPE = E002 | sankarshan.dh 2026-11-12 |
+| [E004-asymviews](../experiments/E004-asymviews/card.md) | E003 | asymmetric views (asym_prob 0.3), fine-tuned from E003; stopped at 23.5k (shortcut: zero flow on asymmetric views); from-scratch run planned | stopped | | | |
 
 ## Findings
 | id | claim (one line) | confidence | evidence | reviewed |
@@ -38,11 +39,13 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 - [E003-Q1](questions.md): Do biphasic units improve flow if they can't be silenced?
 - [E003-Q2](questions.md): Why does training silence transient units?
 - [E003-Q4](questions.md): Would neuron 1's motion signal be used if it reached the flow update directly?
+- [E004-Q1](questions.md): Can fine-tuning revive biphasic units that E003 switched off, or is that state a trap?
 
 ## Reviews
 | id | topic | recommendations accepted / total | reviewed |
 |---|---|---|---|
 | [E003-R1](reviews/E003-R1-2026-11-12-typed-review.md) | What E003 tested, what it missed, what to do next | pending / 6 | sankarshan.dh 2026-11-12 |
+| [E004-R1](reviews/E004-R1-2026-11-13-midtraining.md) | Mid-training review of E004 at 10k vs expectations | 2 accepted / 4 | sankarshan.dh 2026-11-13 |
 
 ## Discussions
 | id | topic | status | outcome (one line) |

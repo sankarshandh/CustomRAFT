@@ -1,0 +1,40 @@
+{
+ "checkpoint": "E004-asymviews@20000",
+ "scenes": 20,
+ "pairs_per_scene": 8,
+ "seed": 0,
+ "iters": 32,
+ "band": 4,
+ "epe": {
+  "A -> A": {
+   "all": 0.387,
+   "object": 1.8856,
+   "boundary": 2.0051,
+   "background": 0.2452
+  },
+  "B -> B": {
+   "all": 0.414,
+   "object": 2.2998,
+   "boundary": 2.0876,
+   "background": 0.2452
+  },
+  "A -> B": {
+   "all": 1.0468,
+   "object": 4.3073,
+   "boundary": 2.4811,
+   "background": 0.7935
+  },
+  "A -> A'": {
+   "all": 1.0467,
+   "object": 4.307,
+   "boundary": 2.4814,
+   "background": 0.7934
+  },
+  "zero flow": {
+   "all": 1.0359,
+   "object": 4.3038,
+   "boundary": 2.4748,
+   "background": 0.7819
+  }
+ }
+}
