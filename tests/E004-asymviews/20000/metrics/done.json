@@ -1,0 +1,21 @@
+{
+ "ok": true,
+ "result": {
+  "step": 20000,
+  "sintel": {
+   "clean": 1.2416,
+   "final": 1.6163,
+   "clean_noc": 0.7271,
+   "clean_occ": 8.2298,
+   "final_noc": 1.0441,
+   "final_occ": 9.3895,
+   "clean_1px": 0.8688,
+   "final_1px": 0.8386
+  },
+  "sintel_source": "computed by pipeline (100 pairs per pass)"
+ },
+ "seconds": 101.3,
+ "when": "2026-11-13T15:29:00",
+ "git": "b5918d6",
+ "full": false
+}

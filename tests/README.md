@@ -20,3 +20,4 @@ Run: `python tools/pipeline.py E00N` after training (see README.md). Stimuli and
 | E003-typed | 60000 (step 60000) | light | 1.700 / 2.363 | – / – / – / – | 13 | [report.md](E003-typed/60000/report.md) | [index.html](E003-typed/60000/index.html) |
 | E003-typed | 75000 (step 75000) | light | 1.600 / 2.100 | – / – / – / – | 13 | [report.md](E003-typed/75000/report.md) | [index.html](E003-typed/75000/index.html) |
 | E003-typed | final (step 100000) | full | 1.507 / 1.998 | 0.276 / 0.265 / 0.180 / 0.256 | 18 | [report.md](E003-typed/final/report.md) | [index.html](E003-typed/final/index.html) |
+| E004-asymviews | 20000 (step 20000) | light | 1.242 / 1.616 | 0.573 / 0.457 / 0.430 / 0.506 | 16 | [report.md](E004-asymviews/20000/report.md) | [index.html](E004-asymviews/20000/index.html) |
