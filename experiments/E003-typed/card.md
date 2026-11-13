@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | E003-typed | E002-contrast | done | 2026-11-11 19:28 → 2026-11-12 06:18 | E003-typed | sankarshan.dh, 2026-11-12 |
 
-Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md) · Questions: [E003-Q1…Q4](../../kb/questions.md) · Reviews: [E003-R1](../../kb/reviews/E003-R1-2026-11-12-typed-review.md) · Discussions: [E003-D1](../../kb/discussions/E003-D1-2026-11-12-biphasic-switched-off.md), [E003-D2](../../kb/discussions/E003-D2-2026-11-12-why-biphasic-silenced.md), [E003-D3](../../kb/discussions/E003-D3-2026-11-12-next-experiments.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md)
+Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md) · Questions: [E003-Q1…Q4](../../kb/questions.md) · Reviews: [E003-R1](../../kb/reviews/E003-R1-2026-11-12-typed-review.md) · Discussions: [E003-D1](../../kb/discussions/E003-D1-2026-11-12-biphasic-switched-off.md), [E003-D2](../../kb/discussions/E003-D2-2026-11-12-why-biphasic-silenced.md), [E003-D3](../../kb/discussions/E003-D3-2026-11-12-next-experiments.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md), [E003-D5](../../kb/discussions/E003-D5-2026-11-13-retinal-hypothesis.md)
 
 ## Question
 Are biphasic (transient) DoG units useful or costly on Sintel when training cannot turn them into monophasic ones?
