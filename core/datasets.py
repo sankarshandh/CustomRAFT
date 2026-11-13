@@ -191,11 +191,8 @@ class RandomDotAsymmetric(Dataset):
 
     def __init__(self, num_frames, ref_offset, crop_size=(368, 768), length=10 ** 7, seed=0,
                  generator=RDS_GENERATOR):
-        import importlib.util
         from types import SimpleNamespace
-        spec = importlib.util.spec_from_file_location('generate_random_dot', generator)
-        self.gen = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(self.gen)
+        self.generator, self._gen = generator, None  # module loaded lazily: loader workers can't pickle it
         self.T, self.ref, self.length, self.seed = num_frames, ref_offset, length, seed
         self.args = SimpleNamespace(num_frames=num_frames, height=crop_size[0], width=crop_size[1], dot_size=2,
                                     dot_mode='binary', density=0.5, object_density=None, object_offset=0.0,
@@ -205,6 +202,18 @@ class RandomDotAsymmetric(Dataset):
 
     def __len__(self):
         return self.length
+
+    @property
+    def gen(self):
+        if self._gen is None:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('generate_random_dot', self.generator)
+            self._gen = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(self._gen)
+        return self._gen
+
+    def __getstate__(self):
+        return {**self.__dict__, '_gen': None}
 
     def _render(self, desc, tex_seed, offset):
         a = vars(self.args) | {'object_offset': offset}

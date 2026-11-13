@@ -221,7 +221,7 @@ def train(args):
     if args.asym_prob > 0:  # asymmetric-view random-dot batches (kb/discussions/E003-D4); off by default
         asym = RandomDotAsymmetric(model.num_frames, model.ref_offset, crop_size=args.image_size, seed=args.seed)
         asym_loader = DataLoader(asym, batch_size=args.batch_size, shuffle=True, drop_last=True,
-                                 num_workers=max(1, args.num_workers // 2), pin_memory=True, persistent_workers=True)
+                                 num_workers=2, prefetch_factor=2, pin_memory=True, persistent_workers=True)
         asym_iter = iter(asym_loader)
         print(f'asymmetric views: p = {args.asym_prob} of the steps use a random-dot asymmetric batch')
     color_jitter = ClipColorJitter()
