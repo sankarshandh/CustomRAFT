@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | E003-typed | E002-contrast | done | 2026-11-11 19:28 → 2026-11-12 06:18 | E003-typed | sankarshan.dh, 2026-11-12 |
 
-Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md) · Questions: [E003-Q1…Q4](../../kb/questions.md) · Reviews: [E003-R1](../../kb/reviews/E003-R1-2026-11-12-typed-review.md) · Discussions: [E003-D1](../../kb/discussions/E003-D1-2026-11-12-biphasic-switched-off.md), [E003-D2](../../kb/discussions/E003-D2-2026-11-12-why-biphasic-silenced.md)
+Run: `runs/customraft-typed/` (smoke: `runs/smoke-typed/`) · Config: [config.json](config.json) · Findings: [E003-F1](../../kb/findings/E003-F1-biphasic-silenced-spatially.md) · Questions: [E003-Q1…Q4](../../kb/questions.md) · Reviews: [E003-R1](../../kb/reviews/E003-R1-2026-11-12-typed-review.md) · Discussions: [E003-D1](../../kb/discussions/E003-D1-2026-11-12-biphasic-switched-off.md), [E003-D2](../../kb/discussions/E003-D2-2026-11-12-why-biphasic-silenced.md), [E003-D3](../../kb/discussions/E003-D3-2026-11-12-next-experiments.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md)
 
 ## Question
 Are biphasic (transient) DoG units useful or costly on Sintel when training cannot turn them into monophasic ones?
@@ -25,6 +25,11 @@ Are biphasic (transient) DoG units useful or costly on Sintel when training cann
 
 ## Verdict
 Inconclusive. The biphasic units were not useful, but the run doesn't show whether they could be: the network found a second way to switch them off (spatial cancellation). Neuron 1 was only attenuated; it responds to strong motion ([S001](../../kb/studies/S001-random-pattern-probe/study.md)), but nothing downstream uses it.
+
+## Next (planned, 2026-11-13)
+- Done: the asymmetric-view check on E003. fmap1 comes from visible-object frames, fmap2 from camouflaged frames of the same scene with independent dots. E003 diverges: EPE 249 vs 1.04 for zero flow (analysis/asymmetric_views/final/asymmetric_views.json; [backlog #2](../../kb/backlog.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md)).
+- Next: asymmetric views as a training augmentation, to make the front end temporal ([backlog #3](../../kb/backlog.md)).
+- Awaiting decisions ([E003-D3](../../kb/discussions/E003-D3-2026-11-12-next-experiments.md)): direct motion path (E004), fixed front end, success criteria first.
 
 ## Files
 - analysis/temporal/typed_final_2026-11-12.json: freeze test, drive, Gabor input mix, RandomDot EPE

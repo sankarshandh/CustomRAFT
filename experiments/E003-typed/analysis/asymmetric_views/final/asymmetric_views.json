@@ -1,0 +1,40 @@
+{
+ "checkpoint": "E003-typed@final",
+ "scenes": 20,
+ "pairs_per_scene": 8,
+ "seed": 0,
+ "iters": 32,
+ "band": 4,
+ "epe": {
+  "A -> A": {
+   "all": 0.2547,
+   "object": 0.8192,
+   "boundary": 1.7356,
+   "background": 0.1782
+  },
+  "B -> B": {
+   "all": 0.2691,
+   "object": 1.0004,
+   "boundary": 1.8098,
+   "background": 0.1801
+  },
+  "A -> B": {
+   "all": 249.4093,
+   "object": 248.0793,
+   "boundary": 250.4208,
+   "background": 249.4705
+  },
+  "A -> A'": {
+   "all": 253.0951,
+   "object": 251.362,
+   "boundary": 255.2398,
+   "background": 253.1529
+  },
+  "zero flow": {
+   "all": 1.0359,
+   "object": 4.3038,
+   "boundary": 2.4748,
+   "background": 0.7819
+  }
+ }
+}

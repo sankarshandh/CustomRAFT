@@ -16,3 +16,5 @@ Reference: Tangemann, Kümmerer, Bethge, "Object segmentation from common fate",
 
 ## Outcome
 The biphasic units are silenced because the architecture gives temporal signals no path to the flow except through appearance matching; training then removes time from the whole front end (DoG and Gabor), not only from the biphasic units. Dataset and unit capability remain untested as secondary causes. Supports the hypothesis in [E003-Q2](../questions.md) and motivates [E003-Q4](../questions.md) (a direct motion path). No claim in [E003-F1](../findings/E003-F1-biphasic-silenced-spatially.md) changed.
+
+Follow-up: [E003-D3](E003-D3-2026-11-12-next-experiments.md) (next experiments).
