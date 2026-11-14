@@ -2,9 +2,9 @@
 
 | id | parent | status | dates | tag | reviewed |
 |---|---|---|---|---|---|
-| E004-asymviews | E003-typed | running (from scratch, scratch-p03) | 2026-11-13 12:39 → | E004-asymviews | sankarshan.dh, 2026-11-13 (plan) |
+| E004-asymviews | E003-typed | done | 2026-11-13 12:39 → 2026-11-14 07:00 | E004-asymviews | sankarshan.dh, 2026-11-13 (plan) |
 
-Run: `runs/E004-asymviews/` (control: `runs/control-p0/`) · Config: [config.json](config.json) · Questions: [E004-Q1](../../kb/questions.md) · Reviews: [E004-R1](../../kb/reviews/E004-R1-2026-11-13-midtraining.md) · Origin: [backlog #3](../../kb/backlog.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md)
+Run: `runs/E004-asymviews/` (control: `runs/control-p0/`) · Config: [config.json](config.json) · Findings: [E004-F1](../../kb/findings/E004-F1-asymmetric-views-zero-flow-shortcut.md), [E004-F2](../../kb/findings/E004-F2-silencing-not-a-finetune-trap.md), [E004-F3](../../kb/findings/E004-F3-random-dots-learned-as-no-motion.md) · Questions: [E004-Q1](../../kb/questions.md) · Reviews: [E004-R1](../../kb/reviews/E004-R1-2026-11-13-midtraining.md) · Origin: [backlog #3](../../kb/backlog.md), [E003-D4](../../kb/discussions/E003-D4-2026-11-13-input-manipulations.md)
 
 ## Question
 Does training with [asymmetric views](../../kb/glossary.md) (fmap1 and fmap2 share only layout and motion) make the front end use time?
@@ -26,10 +26,13 @@ Does training with [asymmetric views](../../kb/glossary.md) (fmap1 and fmap2 sha
 - Cost: Sintel val EPE more than 0.1 above the control run.
 
 ## Result
-(after training)
+- Asymmetric views: zero flow. A → B 1.047 at 20k (fine-tune) and 1.036 from scratch, equal to zero flow 1.036 ([E004-F1](../../kb/findings/E004-F1-asymmetric-views-zero-flow-shortcut.md); analysis/asymmetric_views/).
+- From scratch, Sintel val 1.613 / 2.104 vs E003 1.507 / 1.998 (+0.106 each); pair-only = full clip (1.617 vs 1.613) (tests/E004-asymviews/scratch-p03_final/report.md).
+- 3 of 4 biphasic units switched off from scratch too ([E004-F2](../../kb/findings/E004-F2-silencing-not-a-finetune-trap.md)); neuron 1 more active (12× vs 43× attenuation).
+- Random dots in general tracked 3–4× worse than E003, close to zero flow ([E004-F3](../../kb/findings/E004-F3-random-dots-learned-as-no-motion.md)).
 
 ## Verdict
-(after training)
+Refuted: asymmetric views don't make the network use time; it learns to say "nothing moves" instead, both fine-tuned and from scratch, at a Sintel cost of 0.106.
 
 ## Files
-(after training)
+analysis/asymmetric_views/{10000,20000,scratch-p03_final}/ · tests/E004-asymviews/{20000, scratch-p03_*}/ · runs/scratch-p03/train_metrics_split.csv
