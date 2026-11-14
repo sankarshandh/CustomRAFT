@@ -226,8 +226,10 @@ def main():
     for name in a.checkpoints:
         out, example = run_model(name, a)
         allres[name] = out
-        plot_heatmap(name, out, osp.join(a.fig_dir, f'probe_dog_heatmap_{name}.png'))
-        plot_maps(name, out, example, osp.join(a.fig_dir, f'probe_maps_{name}.png'))
+        # a .pth path can't go into a file name: use its tag (e.g. E004-asymviews@scratch-p03_final) instead
+        fname = paths.describe(name)[1] if any(c in name for c in '/\:') else name
+        plot_heatmap(name, out, osp.join(a.fig_dir, f'probe_dog_heatmap_{fname}.png'))
+        plot_maps(name, out, example, osp.join(a.fig_dir, f'probe_maps_{fname}.png'))
         print(f'===== {name}')
         labels = type_labels(out['filters'])
         for case in CASES:

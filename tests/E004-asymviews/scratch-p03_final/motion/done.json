@@ -1,0 +1,76 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E004-asymviews@scratch-p03_final",
+  "light": false,
+  "fps": 6,
+  "scenes": [
+   {
+    "name": "scene0_occluded",
+    "n_frames": 24,
+    "epe": 1.6134,
+    "epe_pair_only": 1.6171,
+    "epe_boundary": 4.3353,
+    "epe_shape_inside": null
+   },
+   {
+    "name": "scene0_hollow",
+    "n_frames": 24,
+    "epe": 1.1271,
+    "epe_pair_only": 1.1271,
+    "epe_boundary": 3.6215,
+    "epe_shape_inside": 7.8102
+   },
+   {
+    "name": "scene0_roi",
+    "n_frames": 24,
+    "epe": 0.907,
+    "epe_pair_only": 0.907,
+    "epe_boundary": 0.5102,
+    "epe_shape_inside": 7.8103
+   },
+   {
+    "name": "scene0_visible",
+    "n_frames": 24,
+    "epe": 1.4387,
+    "epe_pair_only": 1.4781,
+    "epe_boundary": 4.2469,
+    "epe_shape_inside": null
+   }
+  ],
+  "dog_labels": [
+   "0 mono",
+   "1 bi",
+   "2 mono",
+   "3 bi",
+   "4 mono",
+   "5 bi",
+   "6 mono",
+   "7 bi"
+  ],
+  "dog_object_over_background": [
+   0.918,
+   0.844,
+   0.931,
+   0.911,
+   0.93,
+   3.265,
+   0.929,
+   2.083
+  ],
+  "dog_silent": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   true
+  ]
+ },
+ "seconds": 61.7,
+ "when": "2026-11-14T10:47:03",
+ "git": "2a7c05c+dirty",
+ "full": true
+}

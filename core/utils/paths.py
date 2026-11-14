@@ -43,14 +43,31 @@ def latest_checkpoint():
     raise FileNotFoundError('no experiment has checkpoints; pass --model')
 
 
+def run_of(ref):
+    """Name of the run whose own checkpoint folder holds this checkpoint (experiments/<exp>/runs/<run>/checkpoints/,
+    used by runs other than the main run), else None."""
+    ckdir = osp.dirname(osp.abspath(resolve_ckpt(ref)))
+    runs = osp.dirname(osp.dirname(ckdir))
+    if (osp.basename(ckdir) == 'checkpoints' and osp.basename(runs) == 'runs'
+            and osp.normcase(osp.dirname(osp.dirname(runs))) == osp.normcase(EXPERIMENTS)):
+        return osp.basename(osp.dirname(ckdir))
+    return None
+
+
 def describe(ref):
-    """Checkpoint reference or path -> (experiment folder or None, short tag such as 'E003-typed@100000')."""
+    """Checkpoint reference or path -> (experiment folder or None, short tag such as 'E003-typed@100000').
+    A checkpoint of a non-main run gets the run in its tag: 'E004-asymviews@scratch-p03_final'."""
     path = osp.abspath(resolve_ckpt(ref))
     ckdir = osp.dirname(path)
+    name = osp.splitext(osp.basename(path))[0]
     if osp.basename(ckdir) == 'checkpoints' and osp.dirname(osp.dirname(ckdir)) == EXPERIMENTS:
         exp = osp.dirname(ckdir)
-        return exp, f'{osp.basename(exp)}@{osp.splitext(osp.basename(path))[0]}'
-    return None, osp.splitext(osp.basename(path))[0]
+        return exp, f'{osp.basename(exp)}@{name}'
+    run = run_of(path)
+    if run is not None:
+        exp = osp.dirname(osp.dirname(osp.dirname(ckdir)))
+        return exp, f'{osp.basename(exp)}@{run}_{name}'
+    return None, name
 
 
 def analysis_dir(ref, tool):

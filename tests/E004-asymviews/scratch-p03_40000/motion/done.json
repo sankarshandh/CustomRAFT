@@ -1,0 +1,52 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E004-asymviews@scratch-p03_40000",
+  "light": true,
+  "fps": 6,
+  "scenes": [
+   {
+    "name": "scene0_occluded",
+    "n_frames": 12,
+    "epe": 1.5897,
+    "epe_pair_only": 1.592,
+    "epe_boundary": 4.3899,
+    "epe_shape_inside": null
+   }
+  ],
+  "dog_labels": [
+   "0 mono",
+   "1 bi",
+   "2 mono",
+   "3 bi",
+   "4 mono",
+   "5 bi",
+   "6 mono",
+   "7 bi"
+  ],
+  "dog_object_over_background": [
+   0.987,
+   0.859,
+   0.991,
+   1.213,
+   0.991,
+   5.677,
+   0.995,
+   2.031
+  ],
+  "dog_silent": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   true
+  ]
+ },
+ "seconds": 12.1,
+ "when": "2026-11-14T10:48:38",
+ "git": "2a7c05c+dirty",
+ "full": false
+}

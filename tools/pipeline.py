@@ -59,9 +59,17 @@ def exp_config(exp_id):
         return json.load(f)
 
 
-def run_dir(exp_id):
-    c = exp_config(exp_id)
-    return osp.join(paths.exp_dir(exp_id), 'runs', c.get('main_run') or '')
+def run_dir(exp_id, run=None):
+    """runs/<run>/ of an experiment; default: its main run (config.json main_run)."""
+    return osp.join(paths.exp_dir(exp_id), 'runs', run or exp_config(exp_id).get('main_run') or '')
+
+
+def run_checkpoints(exp_id, run):
+    """(sorted steps, final.pth or None) in runs/<run>/checkpoints/."""
+    d = osp.join(run_dir(exp_id, run), 'checkpoints')
+    files = os.listdir(d) if osp.isdir(d) else []
+    steps = sorted(int(f[:-4]) for f in files if f.endswith('.pth') and f[:-4].isdigit())
+    return steps, (osp.join(d, 'final.pth') if 'final.pth' in files else None)
 
 
 def ckpt_step(ref):
@@ -73,8 +81,9 @@ def ckpt_step(ref):
     return int(torch.load(paths.resolve_ckpt(ref), map_location='cpu', weights_only=False).get('step', -1))
 
 
-def pick_light_steps(exp_id, n):
-    steps = paths.checkpoint_steps(exp_id)[:-1]  # the last saved step equals (or precedes) the final checkpoint
+def pick_light_steps(exp_id, n, run=None):
+    steps = (run_checkpoints(exp_id, run)[0] if run else paths.checkpoint_steps(exp_id))[:-1]
+    # (the last saved step equals, or precedes, the final checkpoint)
     if n <= 0 or not steps:
         return []
     idx = np.unique(np.round(np.linspace(0, len(steps) - 1, n + 2)[1:-1]).astype(int))
@@ -109,6 +118,7 @@ class Ctx:
         self.ref, self.full, self.cfg = ref, full, cfg
         self.exp_dir, self.tag = paths.describe(ref)
         self.exp_id = osp.basename(self.exp_dir)[:4]
+        self.run = paths.run_of(ref)  # None = the main run (checkpoints/ of the experiment)
         self.out = paths.tests_dir(ref)
         self.step = ckpt_step(ref)
 
@@ -127,10 +137,10 @@ class Ctx:
             raise RuntimeError(f'{args[0]} failed (exit {r.returncode}); see {stage}/log.txt')
 
 
-def val_entry(exp_id, step):
+def val_entry(exp_id, step, run=None):
     """(numbers, source) from the run's val_metrics.jsonl at this step; full validation preferred."""
-    rows = [json.loads(line) for line in open(osp.join(run_dir(exp_id), 'val_metrics.jsonl'))] \
-        if osp.exists(osp.join(run_dir(exp_id), 'val_metrics.jsonl')) else []
+    vj = osp.join(run_dir(exp_id, run), 'val_metrics.jsonl')
+    rows = [json.loads(line) for line in open(vj)] if osp.exists(vj) else []
     rows = [r for r in rows if r.get('step') == step]
     full = [r for r in rows if any(k.startswith('full_') for k in r)]
     if full:
@@ -143,7 +153,7 @@ def val_entry(exp_id, step):
 
 
 def stage_metrics(ctx):
-    val, src = val_entry(ctx.exp_id, ctx.step)
+    val, src = val_entry(ctx.exp_id, ctx.step, ctx.run)
     if val is None:
         import torch
         from evaluate import load_model, validate_sintel
@@ -161,8 +171,8 @@ def stage_metrics(ctx):
     return res
 
 
-def load_curves(exp_id):
-    rd = run_dir(exp_id)
+def load_curves(exp_id, run=None):
+    rd = run_dir(exp_id, run)
     tr, va = [], []
     if osp.exists(osp.join(rd, 'train_metrics.csv')):
         with open(osp.join(rd, 'train_metrics.csv')) as f:
@@ -179,13 +189,14 @@ def plot_curves(ctx, path):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    exps = [(ctx.exp_id, '-')]
+    exps = [(ctx.exp_id, '-', ctx.run)]
     parent = exp_config(ctx.exp_id).get('parent')
     if parent:
-        exps.append((parent[:4], '--'))
+        exps.append((parent[:4], '--', None))
     fig, axes = plt.subplots(1, 2, figsize=(13, 4))
-    for eid, ls in exps:
-        tr, va = load_curves(eid)
+    for eid, ls, run in exps:
+        tr, va = load_curves(eid, run)
+        eid = f'{eid} {run}' if run else eid
         if tr:
             s, e = np.array(tr).T
             k = max(1, len(e) // 200)
@@ -229,7 +240,7 @@ def plot_filter_trajectory(ctx, path):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    fj = osp.join(run_dir(ctx.exp_id), 'filters', 'filters.jsonl')
+    fj = osp.join(run_dir(ctx.exp_id, ctx.run), 'filters', 'filters.jsonl')
     if not osp.exists(fj):
         return
     rows = [json.loads(line) for line in open(fj)]
@@ -480,9 +491,17 @@ def neuron_table(st):
     return lines
 
 
-def trajectory(exp_folder):
+def run_prefix(step_dir):
+    """'scratch-p03_final' -> 'scratch-p03'; '40000' or 'final' (main run) -> ''."""
+    return step_dir.rsplit('_', 1)[0] if '_' in step_dir else ''
+
+
+def trajectory(exp_folder, step_dir=''):
+    """Checkpoints of the same run of this experiment that are in tests/."""
     rows = []
     for d in os.listdir(osp.join(paths.TESTS, exp_folder)):
+        if run_prefix(d) != run_prefix(step_dir):
+            continue
         s = read_json(osp.join(paths.TESTS, exp_folder, d, 'summary.json'))
         if s:
             rows.append(s)
@@ -566,7 +585,7 @@ def write_report(ckpt_dir, cfg):
         for c, r in ab.items():
             L.append(f"| {c} | " + ' | '.join(fmt(r.get(k)) for k in ('all', 'object interior', 'boundary',
                                                                        'background')) + ' |')
-    L += ['', '## Training trajectory (checkpoints of this experiment in tests/)', ''] + trajectory(exp_folder)
+    L += ['', '## Training trajectory (checkpoints of this experiment in tests/)', ''] + trajectory(exp_folder, step_dir)
     L += ['', '## Figures', ''] + (figure_links(ckpt_dir) or ['- none'])
     with open(osp.join(ckpt_dir, 'report.md'), 'w', encoding='utf-8') as f:
         f.write('\n'.join(L) + '\n')
@@ -727,6 +746,8 @@ def build_reports(dirs, cfg):
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('exp', nargs='?', help='experiment id, e.g. E004')
+    p.add_argument('--run', default=None, help='a non-main run of the experiment (checkpoints in runs/<run>/checkpoints/); '
+                                              'results go to tests/<experiment>/<run>_<step>/')
     p.add_argument('--steps', default=None, help="comma list of steps and/or 'final' (default: final + light steps)")
     p.add_argument('--light_steps', type=int, default=None, help='number of evenly spaced light steps (config default)')
     p.add_argument('--only', default=None, help=f'comma list of stages: {",".join(STAGES)},report')
@@ -742,7 +763,18 @@ def main():
     if not a.exp:
         p.error('give an experiment id, or --report_only')
     exp_id = osp.basename(paths.exp_dir(a.exp))[:4]
-    if a.steps:
+    if a.run:
+        steps, final = run_checkpoints(exp_id, a.run)
+        ckd = osp.join(run_dir(exp_id, a.run), 'checkpoints')
+        if not steps and not final:
+            p.error(f'no checkpoints in {ckd}')
+        final = final or osp.join(ckd, f'{steps[-1]}.pth')
+        if a.steps:
+            refs = [(final if s == 'final' else osp.join(ckd, f'{s}.pth'), s == 'final') for s in a.steps.split(',')]
+        else:
+            n = cfg['light_steps'] if a.light_steps is None else a.light_steps
+            refs = [(final, True)] + [(osp.join(ckd, f'{s}.pth'), False) for s in pick_light_steps(exp_id, n, a.run)]
+    elif a.steps:
         # 'final' = final.pth, or the highest step when there is none (E001, E002); only that one runs full
         refs = [(exp_id if s == 'final' else f'{exp_id}@{s}', s == 'final') for s in a.steps.split(',')]
     else:

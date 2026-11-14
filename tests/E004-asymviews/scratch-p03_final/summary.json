@@ -1,0 +1,603 @@
+{
+ "checkpoint": "E004-asymviews@scratch-p03_final",
+ "experiment": "E004-asymviews",
+ "dir": "scratch-p03_final",
+ "step": 100000,
+ "full": true,
+ "parent": "E003-typed",
+ "parent_checkpoint": "E003-typed@final",
+ "generated": "2026-11-14T10:52:19",
+ "git": "2a7c05c+dirty",
+ "stages": {
+  "metrics": {
+   "step": 100000,
+   "sintel": {
+    "clean": 1.6135,
+    "final": 2.1038,
+    "clean_noc": 0.8789,
+    "clean_occ": 10.9376,
+    "final_noc": 1.2321,
+    "final_occ": 13.1684,
+    "clean_1px": 0.8571,
+    "final_1px": 0.8276
+   },
+   "sintel_source": "val_metrics.jsonl (full validation)"
+  },
+  "frontend": {
+   "silencing": {
+    "checkpoint": "E004-asymviews@scratch-p03_final",
+    "contrast_eps": 0.005,
+    "is_biphasic": [
+     false,
+     true,
+     false,
+     true,
+     false,
+     true,
+     false,
+     true
+    ],
+    "sigma_center": [
+     0.924391,
+     1.601399,
+     2.066697,
+     4.78688,
+     1.432647,
+     4.747562,
+     2.582066,
+     4.987012
+    ],
+    "sigma_surround": [
+     1.60147,
+     1.75579,
+     2.947527,
+     4.787038,
+     2.348074,
+     4.768747,
+     4.373266,
+     4.987907
+    ],
+    "spatial_l1": [
+     0.796062,
+     0.135029,
+     0.512804,
+     3.8e-05,
+     0.708086,
+     0.005131,
+     0.71498,
+     0.000197
+    ],
+    "channel_mix_norm": [
+     0.763609,
+     0.435925,
+     0.785241,
+     0.028416,
+     0.762582,
+     0.301319,
+     0.745572,
+     0.093408
+    ],
+    "gain": [
+     3.999998,
+     1.022624,
+     3.99999,
+     1.018394,
+     3.999905,
+     1.015417,
+     3.998263,
+     1.029352
+    ],
+    "raw_rms_sintel": [
+     0.037677,
+     0.002266,
+     0.011097,
+     0.0,
+     0.024669,
+     6.4e-05,
+     0.028593,
+     1e-06
+    ],
+    "drive_std_sintel": [
+     3.945905,
+     0.410383,
+     3.4873,
+     7e-06,
+     3.882374,
+     0.013036,
+     3.911637,
+     0.000147
+    ],
+    "raw_rms_dots": [
+     0.353702,
+     0.00443,
+     0.058296,
+     0.0,
+     0.129764,
+     5.8e-05,
+     0.077321,
+     1e-06
+    ],
+    "drive_std_dots": [
+     3.999603,
+     0.678135,
+     3.985353,
+     6e-06,
+     3.996941,
+     0.011762,
+     3.989897,
+     0.000129
+    ],
+    "monophasic_median_raw_rms_sintel": 0.026631,
+    "attenuation_vs_mono": [
+     0.706822,
+     11.751542,
+     2.399817,
+     756043.8125,
+     1.079516,
+     414.830078,
+     0.931394,
+     37285.679688
+    ],
+    "sintel_clips": 20
+   },
+   "params": {
+    "gain_mode": "contrast",
+    "temporal_mode": "typed",
+    "gain_range": [
+     1.0,
+     4.0
+    ]
+   },
+   "temporal": {
+    "checkpoint": "E004-asymviews@scratch-p03_final",
+    "temporal": {
+     "dog_taps_abs_normalised": [
+      [
+       0.0,
+       0.00800000037997961,
+       0.984000027179718,
+       0.00800000037997961,
+       0.0
+      ],
+      [
+       0.00800000037997961,
+       0.492000013589859,
+       0.0,
+       -0.492000013589859,
+       -0.00800000037997961
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.24799999594688416,
+       0.25200000405311584,
+       0.0,
+       -0.25200000405311584,
+       -0.24799999594688416
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.0,
+       0.5,
+       0.0,
+       -0.5,
+       -0.0
+      ],
+      [
+       0.0,
+       0.004000000189989805,
+       0.9919999837875366,
+       0.004000000189989805,
+       0.0
+      ],
+      [
+       0.07699999958276749,
+       0.4230000078678131,
+       0.0,
+       -0.4230000078678131,
+       -0.07699999958276749
+      ]
+     ],
+     "dog_offcentre_mass": [
+      0.01549999974668026,
+      1.0,
+      0.007699999958276749,
+      1.0,
+      0.007699999958276749,
+      1.0,
+      0.007699999958276749,
+      1.0
+     ],
+     "gabor_side_frame_weight": [
+      0.012600000016391277,
+      0.004100000020116568,
+      0.0038999998942017555,
+      0.005900000222027302,
+      0.004399999976158142,
+      0.00419999985024333,
+      0.004100000020116568,
+      0.004800000227987766,
+      0.00419999985024333,
+      0.0038999998942017555,
+      0.0038999998942017555,
+      0.004800000227987766,
+      0.04050000011920929,
+      0.0071000000461936,
+      0.004000000189989805,
+      0.007699999958276749
+     ]
+    },
+    "mix": {
+     "gabor_on_off_imbalance": [
+      0.44200000166893005,
+      0.9919999837875366,
+      0.703000009059906,
+      0.8610000014305115,
+      0.44600000977516174,
+      0.8999999761581421,
+      0.9789999723434448,
+      0.38100001215934753,
+      0.39899998903274536,
+      0.9340000152587891,
+      0.8009999990463257,
+      0.7639999985694885,
+      0.3230000138282776,
+      0.39100000262260437,
+      0.6850000023841858,
+      0.6579999923706055
+     ],
+     "dog_neuron_share_of_gabor_input": [
+      0.1770000010728836,
+      0.0560000017285347,
+      0.15299999713897705,
+      0.05299999937415123,
+      0.18400000035762787,
+      0.0729999989271164,
+      0.22100000083446503,
+      0.0820000022649765
+     ]
+    },
+    "sintel_freeze": {
+     "normal": {
+      "all": 1.825,
+      "noc": 1.05,
+      "occ": 12.158,
+      "0-1": 0.195,
+      "1-4": 0.339,
+      "4-16": 0.9,
+      "16-1000000000.0": 7.151
+     },
+     "freeze": {
+      "all": 1.836,
+      "noc": 1.069,
+      "occ": 12.06,
+      "0-1": 0.194,
+      "1-4": 0.338,
+      "4-16": 0.9,
+      "16-1000000000.0": 7.209
+     },
+     "feature_rel_change_mean": 0.0926,
+     "feature_rel_change_max": 0.2242
+    },
+    "drive": {
+     "drive_std": [
+      3.9119999408721924,
+      0.3630000054836273,
+      3.5390000343322754,
+      0.0,
+      3.750999927520752,
+      0.013000000268220901,
+      3.825000047683716,
+      0.0
+     ],
+     "frac_abs_gt1": [
+      0.48500001430511475,
+      0.03200000151991844,
+      0.4790000021457672,
+      0.0,
+      0.5009999871253967,
+      0.0,
+      0.5389999747276306,
+      0.0
+     ]
+    }
+   }
+  },
+  "patterns": {
+   "checkpoint": "E004-asymviews@scratch-p03_final",
+   "max_scenes": 0,
+   "band": 4,
+   "iters": 32,
+   "occluded": {
+    "clean": {
+     "texture": {
+      "all": 0.9741,
+      "object": 4.3982,
+      "hole": null,
+      "boundary": 2.6557,
+      "background": 0.6658
+     },
+     "shape": {
+      "all": 0.9741,
+      "object": 4.3982,
+      "hole": null,
+      "boundary": 2.6557,
+      "background": 0.6658
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.9696,
+      "object": 4.3768,
+      "hole": null,
+      "boundary": 2.6537,
+      "background": 0.6625
+     },
+     "shape": {
+      "all": 0.9696,
+      "object": 4.3768,
+      "hole": null,
+      "boundary": 2.6537,
+      "background": 0.6625
+     },
+     "pairs": 520
+    }
+   },
+   "hollow": {
+    "clean": {
+     "texture": {
+      "all": 0.7609,
+      "object": 4.6694,
+      "hole": 0.7514,
+      "boundary": 2.6289,
+      "background": 0.6662
+     },
+     "shape": {
+      "all": 0.9972,
+      "object": 4.7195,
+      "hole": 4.7267,
+      "boundary": 2.6706,
+      "background": 0.6662
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.7577,
+      "object": 4.6684,
+      "hole": 0.7485,
+      "boundary": 2.6274,
+      "background": 0.6629
+     },
+     "shape": {
+      "all": 0.9941,
+      "object": 4.7185,
+      "hole": 4.7261,
+      "boundary": 2.6691,
+      "background": 0.6629
+     },
+     "pairs": 520
+    }
+   },
+   "roi": {
+    "clean": {
+     "texture": {
+      "all": 0.6135,
+      "object": 0.0011,
+      "hole": null,
+      "boundary": 0.3756,
+      "background": 0.6668
+     },
+     "shape": {
+      "all": 0.9984,
+      "object": 4.7333,
+      "hole": null,
+      "boundary": 2.6785,
+      "background": 0.6668
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.6106,
+      "object": 0.0012,
+      "hole": null,
+      "boundary": 0.3757,
+      "background": 0.6635
+     },
+     "shape": {
+      "all": 0.9955,
+      "object": 4.7333,
+      "hole": null,
+      "boundary": 2.6782,
+      "background": 0.6635
+     },
+     "pairs": 520
+    }
+   },
+   "visible": {
+    "clean": {
+     "texture": {
+      "all": 0.9239,
+      "object": 3.6349,
+      "hole": null,
+      "boundary": 2.6271,
+      "background": 0.6689
+     },
+     "shape": {
+      "all": 0.9239,
+      "object": 3.6349,
+      "hole": null,
+      "boundary": 2.6271,
+      "background": 0.6689
+     },
+     "pairs": 520
+    },
+    "final": {
+     "texture": {
+      "all": 0.9219,
+      "object": 3.6502,
+      "hole": null,
+      "boundary": 2.625,
+      "background": 0.6655
+     },
+     "shape": {
+      "all": 0.9219,
+      "object": 3.6502,
+      "hole": null,
+      "boundary": 2.625,
+      "background": 0.6655
+     },
+     "pairs": 520
+    }
+   }
+  },
+  "probes": {
+   "files": [
+    "probe_dog_heatmap_E004-asymviews@scratch-p03_final.png",
+    "probe_maps_E004-asymviews@scratch-p03_final.png"
+   ]
+  },
+  "static_viz": {
+   "context_ablation_epe": {
+    "normal": {
+     "all": 1.2361307135886617,
+     "object interior": 4.06333416835481,
+     "boundary": 2.5760732528357053,
+     "background": 0.9635858259329556
+    },
+    "inp = 0": {
+     "all": 0.5236910680929819,
+     "object interior": 3.344643087451798,
+     "boundary": 2.281327754522415,
+     "background": 0.23322199557056722
+    },
+    "net = 0": {
+     "all": 1.237508097456561,
+     "object interior": 4.06216066892077,
+     "boundary": 2.5847146661817035,
+     "background": 0.9648359317499646
+    },
+    "inp = net = 0": {
+     "all": 0.3471006262633536,
+     "object interior": 1.0310952983510109,
+     "boundary": 1.8689072601590615,
+     "background": 0.22841622186627447
+    },
+    "context from another scene": {
+     "all": 1.2475947770807478,
+     "object interior": 4.2955323600145885,
+     "boundary": 2.59279886377334,
+     "background": 0.9581467971464769
+    }
+   }
+  },
+  "motion": {
+   "checkpoint": "E004-asymviews@scratch-p03_final",
+   "light": false,
+   "fps": 6,
+   "scenes": [
+    {
+     "name": "scene0_occluded",
+     "n_frames": 24,
+     "epe": 1.6134,
+     "epe_pair_only": 1.6171,
+     "epe_boundary": 4.3353,
+     "epe_shape_inside": null
+    },
+    {
+     "name": "scene0_hollow",
+     "n_frames": 24,
+     "epe": 1.1271,
+     "epe_pair_only": 1.1271,
+     "epe_boundary": 3.6215,
+     "epe_shape_inside": 7.8102
+    },
+    {
+     "name": "scene0_roi",
+     "n_frames": 24,
+     "epe": 0.907,
+     "epe_pair_only": 0.907,
+     "epe_boundary": 0.5102,
+     "epe_shape_inside": 7.8103
+    },
+    {
+     "name": "scene0_visible",
+     "n_frames": 24,
+     "epe": 1.4387,
+     "epe_pair_only": 1.4781,
+     "epe_boundary": 4.2469,
+     "epe_shape_inside": null
+    }
+   ],
+   "dog_labels": [
+    "0 mono",
+    "1 bi",
+    "2 mono",
+    "3 bi",
+    "4 mono",
+    "5 bi",
+    "6 mono",
+    "7 bi"
+   ],
+   "dog_object_over_background": [
+    0.918,
+    0.844,
+    0.931,
+    0.911,
+    0.93,
+    3.265,
+    0.929,
+    2.083
+   ],
+   "dog_silent": [
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true
+   ]
+  }
+ },
+ "failed_stages": [],
+ "flags": [
+  "DoG 1 (bi): raw Sintel response 12\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 3 (bi): raw Sintel response 756,044\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 5 (bi): raw Sintel response 415\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 7 (bi): raw Sintel response 37,286\u00d7 below the median monophasic neuron (frontend/silencing_check.json)",
+  "DoG 3 (bi): centre \u03c3 4.787 \u2248 surround \u03c3 4.787, so the spatial kernel nearly cancels (spatial L1 0.0000) (frontend/silencing_check.json)",
+  "DoG 5 (bi): centre \u03c3 4.748 \u2248 surround \u03c3 4.769, so the spatial kernel nearly cancels (spatial L1 0.0051) (frontend/silencing_check.json)",
+  "DoG 7 (bi): centre \u03c3 4.987 \u2248 surround \u03c3 4.988, so the spatial kernel nearly cancels (spatial L1 0.0002) (frontend/silencing_check.json)",
+  "DoG 0 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 2 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 4 (mono): gain 4.000 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "DoG 6 (mono): gain 3.998 pinned at the upper bound 4 (frontend/silencing_check.json)",
+  "scene0_occluded: pair-only input gives the same EPE as the full clip (1.617 vs 1.613): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_hollow: pair-only input gives the same EPE as the full clip (1.127 vs 1.127): the extra clip frames are not used here (motion/summary.json)",
+  "scene0_roi: pair-only input gives the same EPE as the full clip (0.907 vs 0.907): the extra clip frames are not used here (motion/summary.json)",
+  "no active DoG neuron responds more inside moving objects than on the background (max ratio 0.93) (motion/summary.json)",
+  "hollow: inside the ring (hole) the predicted flow follows the DOTS, not the shape motion (EPE vs texture 0.75, vs shape 4.73) (patterns/random_patterns.json, clean)",
+  "roi: inside the ROI the predicted flow follows the DOTS, not the shape motion (EPE vs texture 0.00, vs shape 4.73) (patterns/random_patterns.json, clean)",
+  "Sintel val clean EPE 1.613 vs parent 1.507 (\u0394 +0.106)",
+  "Sintel val final EPE 2.104 vs parent 1.998 (\u0394 +0.106)",
+  "random pattern occluded (clean) EPE 0.974 vs parent 0.276 (\u0394 +0.698)",
+  "random pattern hollow (clean) EPE 0.761 vs parent 0.265 (\u0394 +0.496)",
+  "random pattern roi (clean) EPE 0.614 vs parent 0.180 (\u0394 +0.434)",
+  "random pattern visible (clean) EPE 0.924 vs parent 0.256 (\u0394 +0.668)"
+ ]
+}

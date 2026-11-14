@@ -1,0 +1,89 @@
+{
+ "ok": true,
+ "result": {
+  "checkpoint": "E004-asymviews@scratch-p03_40000",
+  "max_scenes": 4,
+  "band": 4,
+  "iters": 32,
+  "occluded": {
+   "clean": {
+    "texture": {
+     "all": 1.4274,
+     "object": 4.8684,
+     "hole": null,
+     "boundary": 2.9975,
+     "background": 1.1862
+    },
+    "shape": {
+     "all": 1.4274,
+     "object": 4.8684,
+     "hole": null,
+     "boundary": 2.9975,
+     "background": 1.1862
+    },
+    "pairs": 52
+   }
+  },
+  "hollow": {
+   "clean": {
+    "texture": {
+     "all": 1.2576,
+     "object": 4.9016,
+     "hole": 1.2851,
+     "boundary": 3.018,
+     "background": 1.1865
+    },
+    "shape": {
+     "all": 1.4395,
+     "object": 4.9016,
+     "hole": 5.1015,
+     "boundary": 3.018,
+     "background": 1.1865
+    },
+    "pairs": 52
+   }
+  },
+  "roi": {
+   "clean": {
+    "texture": {
+     "all": 1.117,
+     "object": 0.0501,
+     "hole": null,
+     "boundary": 0.7808,
+     "background": 1.1882
+    },
+    "shape": {
+     "all": 1.4429,
+     "object": 5.0896,
+     "hole": null,
+     "boundary": 3.066,
+     "background": 1.1882
+    },
+    "pairs": 52
+   }
+  },
+  "visible": {
+   "clean": {
+    "texture": {
+     "all": 1.3184,
+     "object": 2.8878,
+     "hole": null,
+     "boundary": 2.8786,
+     "background": 1.1885
+    },
+    "shape": {
+     "all": 1.3184,
+     "object": 2.8878,
+     "hole": null,
+     "boundary": 2.8786,
+     "background": 1.1885
+    },
+    "pairs": 52
+   }
+  }
+ },
+ "seconds": 25.7,
+ "when": "2026-11-14T10:48:25",
+ "git": "2a7c05c+dirty",
+ "full": false
+}

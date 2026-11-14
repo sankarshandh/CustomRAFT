@@ -1,0 +1,45 @@
+{
+ "checkpoint": "E004-asymviews@scratch-p03_25000",
+ "light": true,
+ "fps": 6,
+ "scenes": [
+  {
+   "name": "scene0_occluded",
+   "n_frames": 12,
+   "epe": 1.4932,
+   "epe_pair_only": 1.4935,
+   "epe_boundary": 4.3998,
+   "epe_shape_inside": null
+  }
+ ],
+ "dog_labels": [
+  "0 mono",
+  "1 bi",
+  "2 mono",
+  "3 bi",
+  "4 mono",
+  "5 bi",
+  "6 mono",
+  "7 bi"
+ ],
+ "dog_object_over_background": [
+  0.987,
+  0.725,
+  0.991,
+  1.247,
+  0.991,
+  5.503,
+  0.996,
+  2.966
+ ],
+ "dog_silent": [
+  false,
+  false,
+  false,
+  true,
+  false,
+  true,
+  false,
+  true
+ ]
+}
