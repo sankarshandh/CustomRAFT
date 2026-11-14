@@ -3,11 +3,13 @@
 **Read this file first.** Then open only the card, finding or study a row points to. Go to `kb/legacy/` (the old KB, kept verbatim) or raw files in `analysis/` only when those are not enough.
 Everything here is filled in by hand, together: a row is trusted once its `reviewed` column is set.
 
-## Now (updated 2026-11-12)
-- Nothing training. Last experiment: E003-typed (done).
-- Pending: your decisions on E003-R1 recommendations 1–6.
-- KB still empty: E000–E002 cards, S001 study write-up, glossary beyond 6 terms.
-- Next likely step: decide E003-R1 → E004 (typed + min centre/surround gap).
+## Now (updated 2026-11-14)
+- Nothing training. Last experiment: E004-asymviews (done, refuted): asymmetric views teach "nothing moves",
+  not the use of time; biphasic units switched off from scratch too (E004-F1, E004-F2).
+- Pending: your decisions in E003-D5 (restate the hypothesis as "filters help if read out as motion"?) and
+  E003-D3; E003-R1 recommendations 1–6.
+- Open lead: E004-F3 (random dots learned as "no motion"); test by mixing normal random-dot batches into training.
+- Next step: still under discussion (E003-D5). Candidate: a direct motion path (E003-Q4). No experiment opened yet.
 
 ## Project
 (3 lines: what the model is, what it is trained on, the main question)
@@ -47,7 +49,7 @@ Everything here is filled in by hand, together: a row is trusted once its `revie
 | id | topic | recommendations accepted / total | reviewed |
 |---|---|---|---|
 | [E003-R1](reviews/E003-R1-2026-11-12-typed-review.md) | What E003 tested, what it missed, what to do next | pending / 6 | sankarshan.dh 2026-11-12 |
-| [E004-R1](reviews/E004-R1-2026-11-13-midtraining.md) | Mid-training review of E004 at 10k vs expectations | 2 accepted / 4 | sankarshan.dh 2026-11-13 |
+| [E004-R1](reviews/E004-R1-2026-11-13-midtraining.md) | Mid-training review of E004 at 10k vs expectations | 4 accepted / 4 | sankarshan.dh 2026-11-13 |
 
 ## Discussions
 | id | topic | status | outcome (one line) |

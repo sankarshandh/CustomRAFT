@@ -29,4 +29,4 @@ Against the expectations set before training: none of the "time is used" signals
 1. accepted, done 2026-11-13. Result: A → B 1.049 vs zero flow 1.036 (object 4.303 vs 4.304): the shortcut (experiments/E004-asymviews/analysis/asymmetric_views/10000/asymmetric_views.json)
 2. accepted (modified): review at 20k with the pipeline and the asymmetric-view check. "Switched on" means any of: A → B < 0.9 (zero flow 1.04) with object EPE < 4.30; biphasic centre/surround gap > 5%, or biphasic drive std clearly up; Gabor temporal σ median > 0.4. If none holds: stop the main run, skip the control run, and train from scratch inside E004 (not a new experiment). Outcome at 20k: not switched on (A → B 1.047 vs zero flow 1.036; gaps and Gabor σ unchanged; see the E004 card, step 2). Main run stopped at about 23.5k, control cancelled.
 3. accepted → [E004-Q1](../questions.md)
-4.
+4. accepted, done: train.py logs train_metrics_split.csv when --asym_prob > 0 (used in runs/scratch-p03)
